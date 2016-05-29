@@ -255,6 +255,17 @@
       <Name>HeiFeiMideaDll</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Illustrator">
+      <Guid>{6302455F-E28B-4425-B2A1-B7A34F025651}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>"C:\Users\帅\Documents\Code\sscode.exe"  "美联博室外机空调生产信息化系统" "$(ProjectDir)</PreBuildEvent>
