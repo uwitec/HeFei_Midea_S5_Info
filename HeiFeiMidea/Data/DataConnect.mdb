@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Connection>
+	<Conn1 Class="All.Class.Access" Name="ReadAndWriteCommunicateData" Text="实时数据用">
+		<Address>.\Data\</Address>
+		<DataBase>Value.mdb</DataBase>
+		<UserName></UserName>
+		<Password></Password>
+	</Conn1>
+	<Conn2 Class="All.Class.SQLServer" Name="LocalData" Text="本地设置数据用">
+		<Address>127.0.0.1</Address>
+		<DataBase>HeFeiMidea</DataBase>
+		<UserName>Admin</UserName>
+		<Password></Password>
+	</Conn2>
+	<Conn3 Class="All.Class.SQLServer" Name="ReportData" Text="报表数据用">
+		<Address>127.0.0.1</Address>
+		<DataBase>HeFeiMidea</DataBase>
+		<UserName>Admin</UserName>
+		<Password></Password>
+	</Conn3>
+	<Conn4 Class="All.Class.SQLServer" Name="ReadData" Text="读取数据用">
+		<Address>127.0.0.1</Address>
+		<DataBase>HeFeiMidea</DataBase>
+		<UserName>Admin</UserName>
+		<Password></Password>
+	</Conn4>
+	<Conn5 Class="All.Class.SQLServer" Name="WriteData" Text="写入数据用">
+		<Address>127.0.0.1</Address>
+		<DataBase>HeFeiMidea</DataBase>
+		<UserName>Admin</UserName>
+		<Password></Password>
+	</Conn5>
+	<Conn6 Class="All.Class.SQLServer" Name="OilData" Text="注油机数据库">
+		<Address>192.168.1.55</Address>
+		<DataBase>MLB</DataBase>
+		<UserName>sa</UserName>
+		<Password></Password>
+	</Conn6>
+	<Conn7 Class="All.Class.SQLServer" Name="TestData" Text="检测数据库">
+		<Address>192.168.1.161</Address>
+		<DataBase>HeFeiMidea</DataBase>
+		<UserName>Admin</UserName>
+		<Password></Password>
+	</Conn7>
+  <Conn7 Class="All.Class.SQLServer" Name="TestDataTmp" Text="检测实时数据库">
+    <Address>192.168.1.161</Address>
+    <DataBase>HeFeiMidea</DataBase>
+    <UserName>Admin</UserName>
+    <Password></Password>
+  </Conn7>
+  <Conn8 Class="All.Class.PostGreSQL" Name="MaterialData" Text="物料数据库">
+    <Address>192.168.1.201</Address>
+    <DataBase>LedShow</DataBase>
+    <UserName>odoo</UserName>
+    <Password>odoo</Password>
+  </Conn8>
+  <Conn9 Class="All.Class.Access" Name="BarCode" Text="保存所有条码数据">
+    <Address>.\Data\</Address>
+    <DataBase>PrintBarCode.mdb</DataBase>
+    <UserName></UserName>
+    <Password></Password>
+  </Conn9>
+</Connection>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<AllCommunication>
+  <!--此节点下所有数据都为通讯部件-->
+  <Commun1 Class="All.Communite.Com" PortName="Com5" FlushTick="100" BaudRate="115200" Use="true" Text="1#条码串口">
+     <Meter Class="All.Meter.BarCode" Text="1#条码枪" TimeOut="1000">
+		  <Read>
+			  <Value1>
+				  <Text>条码</Text>
+				  <Data>string</Data>
+				  <Start>0</Start>
+				  <End>0</End>
+				  <Index>0</Index>
+				  <Part>0</Part>
+			  </Value1>
+		  </Read>
+     </Meter>
+  </Commun1>
+  <Commun2 Class="All.Communite.Com" PortName="Com2" FlushTick="100" BaudRate="115200" Use="true"  Text="2#条码串口">
+     <Meter Class="All.Meter.BarCode" Text="2#条码枪" TimeOut="1000">
+		  <Read>
+			  <Value1>
+				  <Text>条码</Text>
+				  <Data>string</Data>
+				  <Start>0</Start>
+				  <End>0</End>
+				  <Index>1</Index>
+				  <Part>0</Part>
+			  </Value1>
+		  </Read>
+     </Meter>
+  </Commun2>
+  <Commun3 Class="All.Communite.Udp" LocalPort="6400" FlushTick="100" Text="上位机通讯端口" Use="true">
+     <Meter Class="All.Meter.SSRead" Text="上下位机通讯" TimeOut="1000" bool="14" string="3" float="1" ushort="1"  RemotHost="192.168.1.100" RemotPort="6300">
+		<Read>
+			<Value1>
+				<Text>关机命令,板1,板2,板3,板4,板5,板6,板7,板8,板9,折弯机,PC屏,PLC,检漏</Text>
+				<Data>bool</Data>
+				<Start>0</Start>
+				<End>13</End>
+				<Index>0,1,2,3,4,5,6,7,8,9,10,11,12,13</Index>
+				<Part>0</Part>
+			</Value1>
+			<Value2>
+				<Text>程序版本,可以生成下一条码了,压缩机序号和结果</Text>
+				<Data>string</Data>
+				<Start>0</Start>
+				<End>2</End>
+				<Index>2,3,4</Index>
+				<Part>0</Part>
+			</Value2>
+			<Value3>
+				<Text>上下位机连通测试</Text>
+				<Data>float</Data>
+				<Start>0</Start>
+				<End>0</End>
+				<Index>0</Index>
+				<Part>0</Part>
+			</Value3>
+      <Value4>
+        <Text>相机检测结果</Text>
+        <Data>ushort</Data>
+        <Start>0</Start>
+        <End>0</End>
+        <Index>0</Index>
+        <Part>0</Part>
+      </Value4>
+		</Read>
+	 </Meter>
+  </Commun3>
+  <Commun4 Class="All.Communite.Udp" LocalPort="6200" FlushTick="100" Text="上位机通讯端口" Use="true">
+    <Meter Class="All.Meter.SSWrite" Text="上下位机只写端口" TimeOut="200" RemotHost="192.168.1.100" RemotPort="6100">
+    </Meter>
+  </Commun4>
+  <Commun5 Class="All.Communite.TcpClient" RemotHost="192.168.1.40" RemotPort="6103"  Use="false" FlushTick="300" Run="false"  Text="机器人线程1#">
+    <Meter Class="All.Meter.NetModbusRtu" Text="1#机器人PLC读扭矩专用" TimeOut="300" Address="3">
+      <Read>
+        <Value1>
+          <Text>条码1,条码2,条码3,条码4,条码5,条码6,条码7,条码8,条码9,条码10,条码11,条码12,条码13,条码14,条码15,条码16,条码17,条码18,条码19,条码20,条码21,条码22,条码23,条码24,条码25,条码26,条码27,条码28,条码29,条码30,条码31,条码32,条码33,条码34,条码35,条码36,条码37,条码38,条码39,条码40,条码41,条码42,条码43,条码44,条码45,条码46,条码47,条码48,条码49,条码50,备用,压缩机序号,复位比对信号,完成信号</Text>
+          <Data>byte</Data>
+          <Start>0</Start>
+          <End>26</End>
+          <Index>0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53</Index>
+          <Part>0</Part>
+        </Value1>
+      </Read>
+    </Meter>
+  </Commun5>
+  <Commun6 Class="All.Communite.TcpClient" RemotHost="192.168.1.153" RemotPort="102" Run="false" Use="false" FlushTick="200" Text="折弯机线程1#">
+    <Meter Class="All.Meter.SimensSmart200Net" Text="折弯机PLC" TimeOut="500">
+      <Read>
+        <Value1>
+          <Text>信号</Text>
+          <Data>byte</Data>
+          <Start>205</Start>
+          <End>205</End>
+          <Index>54</Index>
+          <Part>0</Part>
+        </Value1>
+      </Read>
+    </Meter>
+  </Commun6>
+</AllCommunication>

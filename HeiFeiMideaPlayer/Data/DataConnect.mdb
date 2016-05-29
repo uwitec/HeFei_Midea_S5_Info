@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Connection>
+	<Conn1 Class="All.Class.Access" Name="ReadAndWriteCommunicateData" Text="实时数据用">
+		<Address>.\Data\</Address>
+		<DataBase>Value.mdb</DataBase>
+		<UserName></UserName>
+		<Password></Password>
+	</Conn1>
+  <Conn4 Class="All.Class.SQLServer" Name="FlushData" Text="刷新数据用">
+    <Address>127.0.0.1</Address>
+    <DataBase>HeFeiMidea</DataBase>
+    <UserName>Admin</UserName>
+    <Password></Password>
+  </Conn4>
+  <Conn2 Class="All.Class.Sqlce" Name="BarCode" Text="保存所有条码数据">
+    <Address>.\Data\</Address>
+    <DataBase>PrintBarCode.sdf</DataBase>
+    <UserName></UserName>
+    <Password></Password>
+  </Conn2>
+  <Conn3 Class="All.Class.Sqlce" Name="LenNingQi" Text="冷凝器检测数据">
+    <Address>.\Data\</Address>
+    <DataBase>LenNingQi.sdf</DataBase>
+    <UserName></UserName>
+    <Password></Password>
+  </Conn3>
+</Connection>

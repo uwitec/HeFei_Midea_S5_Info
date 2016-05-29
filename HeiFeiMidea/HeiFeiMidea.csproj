@@ -1,0 +1,628 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3DEDF425-F217-4AFB-B3BF-E603131D5E99}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HeiFeiMidea</RootNamespace>
+    <AssemblyName>HeFeiMidea</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <PublishUrl>发布\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>backup-restore.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="cAllPlayerCode.cs" />
+    <Compile Include="cCarLocal.cs" />
+    <Compile Include="cFlushInfo.cs" />
+    <Compile Include="cFlushUserLogin.cs" />
+    <Compile Include="CheckTestResultFile.cs" />
+    <Compile Include="cData.cs" />
+    <Compile Include="cDataRead.cs" />
+    <Compile Include="cDataWrite.cs" />
+    <Compile Include="cSheBei.cs" />
+    <Compile Include="cWriteRootID.cs" />
+    <Compile Include="FlushAllError.cs" />
+    <Compile Include="FlushLenNingQi.cs" />
+    <Compile Include="FlushOEE.cs" />
+    <Compile Include="FlushSheBei.cs" />
+    <Compile Include="FlushSingleChongHaiHuiShou.cs" />
+    <Compile Include="FlushSingleChouKongChongZhu.cs" />
+    <Compile Include="FlushSingleJianLou.cs" />
+    <Compile Include="FlushSingleMaterial.cs" />
+    <Compile Include="FlushSingleNiuJu.cs" />
+    <Compile Include="FlushSingleXiangJi.cs" />
+    <Compile Include="FlushSingleYaSuoJi.cs" />
+    <Compile Include="cMain.cs" />
+    <Compile Include="cDataXml.cs" />
+    <Compile Include="cPCLocal.cs" />
+    <Compile Include="FlushData.cs" />
+    <Compile Include="FlushDataRead.cs" />
+    <Compile Include="FlushDataWrite.cs" />
+    <Compile Include="FlushMeter.cs" />
+    <Compile Include="FlushSingleAnZhuang.cs" />
+    <Compile Include="FlushSingleError.cs" />
+    <Compile Include="FlushSingleTestTmp.cs" />
+    <Compile Include="FlushSingleZheWang.cs" />
+    <Compile Include="FlushStationStatue.cs" />
+    <Compile Include="FlushTimeOut.cs" />
+    <Compile Include="frmMessageError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMessageError.Designer.cs">
+      <DependentUpon>frmMessageError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlayAll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlayAll.Designer.cs">
+      <DependentUpon>frmPlayAll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlaySheBei.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlaySheBei.Designer.cs">
+      <DependentUpon>frmPlaySheBei.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportAllError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportAllError.Designer.cs">
+      <DependentUpon>frmReportAllError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportCount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportCount.Designer.cs">
+      <DependentUpon>frmReportCount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportDetail.Designer.cs">
+      <DependentUpon>frmReportDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportUser.Designer.cs">
+      <DependentUpon>frmReportUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportPingZhi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportPingZhi.Designer.cs">
+      <DependentUpon>frmReportPingZhi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSetBoShi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetBoShi.Designer.cs">
+      <DependentUpon>frmSetBoShi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSetError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetError.Designer.cs">
+      <DependentUpon>frmSetError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlayCounts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlayCounts.Designer.cs">
+      <DependentUpon>frmPlayCounts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlayLine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlayLine.Designer.cs">
+      <DependentUpon>frmPlayLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlayLineOther.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlayLineOther.Designer.cs">
+      <DependentUpon>frmPlayLineOther.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlayManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlayManagement.Designer.cs">
+      <DependentUpon>frmPlayManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlayOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlayOrder.Designer.cs">
+      <DependentUpon>frmPlayOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlayStop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlayStop.Designer.cs">
+      <DependentUpon>frmPlayStop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlayTick.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlayTick.Designer.cs">
+      <DependentUpon>frmPlayTick.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlayVideo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlayVideo.Designer.cs">
+      <DependentUpon>frmPlayVideo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlayWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlayWindow.Designer.cs">
+      <DependentUpon>frmPlayWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportBar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportBar.Designer.cs">
+      <DependentUpon>frmReportBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSetLocal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetLocal.Designer.cs">
+      <DependentUpon>frmSetLocal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSetMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetMaterial.Designer.cs">
+      <DependentUpon>frmSetMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSetMode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetMode.Designer.cs">
+      <DependentUpon>frmSetMode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSetModeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetModeList.Designer.cs">
+      <DependentUpon>frmSetModeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSetNiuJu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetNiuJu.Designer.cs">
+      <DependentUpon>frmSetNiuJu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSetOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetOrder.Designer.cs">
+      <DependentUpon>frmSetOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSetPlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetPlayer.Designer.cs">
+      <DependentUpon>frmSetPlayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSetSheBei.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetSheBei.Designer.cs">
+      <DependentUpon>frmSetSheBei.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSetStation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetStation.Designer.cs">
+      <DependentUpon>frmSetStation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSetTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetTime.Designer.cs">
+      <DependentUpon>frmSetTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSetZheWang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetZheWang.Designer.cs">
+      <DependentUpon>frmSetZheWang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTestJson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTestJson.Designer.cs">
+      <DependentUpon>frmTestJson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserAdd.Designer.cs">
+      <DependentUpon>frmUserAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserChangeEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserChangeEdit.Designer.cs">
+      <DependentUpon>frmUserChangeEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserLevel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserLevel.Designer.cs">
+      <DependentUpon>frmUserLevel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserLogin.Designer.cs">
+      <DependentUpon>frmUserLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\dsReport.cs">
+      <DependentUpon>dsReport.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\dsReport.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsReport.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FlushSingleOil.cs" />
+    <Compile Include="FlushSingleTest.cs" />
+    <Compile Include="cStatueOther.cs" />
+    <Compile Include="Report\frmAllMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmAllMain.Designer.cs">
+      <DependentUpon>frmAllMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\frmMainList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmMainList.Designer.cs">
+      <DependentUpon>frmMainList.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmMessageError.resx">
+      <DependentUpon>frmMessageError.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlayAll.resx">
+      <DependentUpon>frmPlayAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportCount.resx">
+      <DependentUpon>frmReportCount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportUser.resx">
+      <DependentUpon>frmReportUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetTime.resx">
+      <DependentUpon>frmSetTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptChongHaiHuiShou.rdlc" />
+    <EmbeddedResource Include="frmPlaySheBei.resx">
+      <DependentUpon>frmPlaySheBei.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportAllError.resx">
+      <DependentUpon>frmReportAllError.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportDetail.resx">
+      <DependentUpon>frmReportDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportPingZhi.resx">
+      <DependentUpon>frmReportPingZhi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetBoShi.resx">
+      <DependentUpon>frmSetBoShi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetError.resx">
+      <DependentUpon>frmSetError.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlayCounts.resx">
+      <DependentUpon>frmPlayCounts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlayLine.resx">
+      <DependentUpon>frmPlayLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlayLineOther.resx">
+      <DependentUpon>frmPlayLineOther.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlayManagement.resx">
+      <DependentUpon>frmPlayManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlayOrder.resx">
+      <DependentUpon>frmPlayOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlayStop.resx">
+      <DependentUpon>frmPlayStop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlayTick.resx">
+      <DependentUpon>frmPlayTick.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlayVideo.resx">
+      <DependentUpon>frmPlayVideo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlayWindow.resx">
+      <DependentUpon>frmPlayWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportBar.resx">
+      <DependentUpon>frmReportBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetLocal.resx">
+      <DependentUpon>frmSetLocal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetMaterial.resx">
+      <DependentUpon>frmSetMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetMode.resx">
+      <DependentUpon>frmSetMode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetModeList.resx">
+      <DependentUpon>frmSetModeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetNiuJu.resx">
+      <DependentUpon>frmSetNiuJu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetOrder.resx">
+      <DependentUpon>frmSetOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetPlayer.resx">
+      <DependentUpon>frmSetPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetSheBei.resx">
+      <DependentUpon>frmSetSheBei.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetStation.resx">
+      <DependentUpon>frmSetStation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetZheWang.resx">
+      <DependentUpon>frmSetZheWang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTestJson.resx">
+      <DependentUpon>frmTestJson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserAdd.resx">
+      <DependentUpon>frmUserAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserChangeEdit.resx">
+      <DependentUpon>frmUserChangeEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserLevel.resx">
+      <DependentUpon>frmUserLevel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserLogin.resx">
+      <DependentUpon>frmUserLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="FlushPlc.cs" />
+    <EmbeddedResource Include="Report\frmAllMain.resx">
+      <DependentUpon>frmAllMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\frmMainList.resx">
+      <DependentUpon>frmMainList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptAnJian.rdlc" />
+    <EmbeddedResource Include="Report\rptAnZhuangList.rdlc" />
+    <EmbeddedResource Include="Report\rptChongHaiShuiShouTmp.rdlc" />
+    <EmbeddedResource Include="Report\rptChongZhu.rdlc" />
+    <EmbeddedResource Include="Report\rptChouKongQuXian.rdlc" />
+    <EmbeddedResource Include="Report\rptCountDay.rdlc" />
+    <EmbeddedResource Include="Report\rptCountEvery.rdlc" />
+    <EmbeddedResource Include="Report\rptCountMonth.rdlc" />
+    <EmbeddedResource Include="Report\rptCountYear.rdlc" />
+    <EmbeddedResource Include="Report\rptErrorChaoShi.rdlc" />
+    <EmbeddedResource Include="Report\rptErrorChaoShiDetial.rdlc" />
+    <EmbeddedResource Include="Report\rptErrorSheBei.rdlc" />
+    <EmbeddedResource Include="Report\rptErrorSheBeiDetial.rdlc" />
+    <EmbeddedResource Include="Report\rptErrorWuLiao.rdlc" />
+    <EmbeddedResource Include="Report\rptErrorWuLiaoDetial.rdlc" />
+    <EmbeddedResource Include="Report\rptJianCeQuXian.rdlc" />
+    <EmbeddedResource Include="Report\rptKaoQin.rdlc" />
+    <EmbeddedResource Include="Report\rptKaoQinDetial.rdlc" />
+    <EmbeddedResource Include="Report\rptKaoQinError.rdlc" />
+    <EmbeddedResource Include="Report\rptKaoQinErrorDetial.rdlc" />
+    <EmbeddedResource Include="Report\rptMainList.rdlc" />
+    <EmbeddedResource Include="Report\rptOEEChart.rdlc" />
+    <EmbeddedResource Include="Report\rptOEEDetial.rdlc" />
+    <EmbeddedResource Include="Report\rptOil.rdlc" />
+    <EmbeddedResource Include="Report\rptPeiJian.rdlc" />
+    <EmbeddedResource Include="Report\rptPingZhiTestPass.rdlc" />
+    <EmbeddedResource Include="Report\rptPinZhi.rdlc" />
+    <EmbeddedResource Include="Report\rptPinZhiAllPass.rdlc" />
+    <EmbeddedResource Include="Report\rptPinZhiError.rdlc" />
+    <EmbeddedResource Include="Report\rptUserError.rdlc" />
+    <EmbeddedResource Include="Report\rtpJianCeQuXianData.rdlc" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\TestAll\All\All.csproj">
+      <Project>{6838a3ea-032e-42e9-afe0-61bdd58d953f}</Project>
+      <Name>All</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HeiFeiMideaDll\HeiFeiMideaDll.csproj">
+      <Project>{daac50b3-a39e-4933-a9db-f97fc96293cb}</Project>
+      <Name>HeiFeiMideaDll</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Report\dsReport.xsc">
+      <DependentUpon>dsReport.xsd</DependentUpon>
+    </None>
+    <None Include="Report\dsReport.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsReport.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Report\dsReport.xss">
+      <DependentUpon>dsReport.xsd</DependentUpon>
+    </None>
+    <None Include="Resources\Thunder - 01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Download - 01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Upload - 01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="cStatueTestTime.cs" />
+    <Content Include="backup-restore.ico" />
+    <Content Include="Data\DataConnect.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\MeterConnect.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\PrintBarCode.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\PrintBarCode.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Value.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\no %283%29.ico" />
+    <None Include="Resources\White.png" />
+    <None Include="Resources\ok %282%29.ico" />
+    <None Include="Resources\Black.png" />
+    <None Include="Resources\Test.png" />
+    <None Include="Resources\Sad.png" />
+    <None Include="Resources\OK.png" />
+    <None Include="Resources\Arrow - Right.ico" />
+    <None Include="Resources\Arrow - Left.ico" />
+    <None Include="Resources\back1.ico" />
+    <None Include="Resources\next1.ico" />
+    <None Include="Resources\Cirlce Play.png" />
+    <None Include="Resources\Circle Stop.png" />
+    <None Include="Resources\Circle Pause.png" />
+    <None Include="Resources\down %285%29.ico" />
+    <None Include="Resources\up %283%29.ico" />
+    <None Include="Resources\edit_remove.ico" />
+    <None Include="Resources\edit_add.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>"C:\Users\帅\Documents\Code\sscode.exe"  "美联博室外机空调生产信息化系统" "$(ProjectDir)</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

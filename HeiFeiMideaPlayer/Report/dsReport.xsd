@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsReport" targetNamespace="http://tempuri.org/dsReport.xsd" xmlns:mstns="http://tempuri.org/dsReport.xsd" xmlns="http://tempuri.org/dsReport.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsReport" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsReport" msprop:Generator_UserDSName="dsReport">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtTestAll" msprop:Generator_TableClassName="dtTestAllDataTable" msprop:Generator_TableVarName="tabledtTestAll" msprop:Generator_TablePropName="dtTestAll" msprop:Generator_RowDeletingName="dtTestAllRowDeleting" msprop:Generator_RowChangingName="dtTestAllRowChanging" msprop:Generator_RowEvHandlerName="dtTestAllRowChangeEventHandler" msprop:Generator_RowDeletedName="dtTestAllRowDeleted" msprop:Generator_UserTableName="dtTestAll" msprop:Generator_RowChangedName="dtTestAllRowChanged" msprop:Generator_RowEvArgName="dtTestAllRowChangeEvent" msprop:Generator_RowClassName="dtTestAllRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="BarCode" msprop:Generator_ColumnVarNameInTable="columnBarCode" msprop:Generator_ColumnPropNameInRow="BarCode" msprop:Generator_ColumnPropNameInTable="BarCodeColumn" msprop:Generator_UserColumnName="BarCode" type="xs:string" minOccurs="0" />
+              <xs:element name="TestTime" msprop:Generator_ColumnVarNameInTable="columnTestTime" msprop:Generator_ColumnPropNameInRow="TestTime" msprop:Generator_ColumnPropNameInTable="TestTimeColumn" msprop:Generator_UserColumnName="TestTime" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Mode" msprop:Generator_ColumnVarNameInTable="columnMode" msprop:Generator_ColumnPropNameInRow="Mode" msprop:Generator_ColumnPropNameInTable="ModeColumn" msprop:Generator_UserColumnName="Mode" type="xs:string" minOccurs="0" />
+              <xs:element name="IsPass" msprop:Generator_ColumnVarNameInTable="columnIsPass" msprop:Generator_ColumnPropNameInRow="IsPass" msprop:Generator_ColumnPropNameInTable="IsPassColumn" msprop:Generator_UserColumnName="IsPass" type="xs:boolean" minOccurs="0" />
+              <xs:element name="IsReturn" msprop:Generator_ColumnVarNameInTable="columnIsReturn" msprop:Generator_ColumnPropNameInRow="IsReturn" msprop:Generator_ColumnPropNameInTable="IsReturnColumn" msprop:Generator_UserColumnName="IsReturn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dtTestCount" msprop:Generator_TableClassName="dtTestCountDataTable" msprop:Generator_TableVarName="tabledtTestCount" msprop:Generator_TablePropName="dtTestCount" msprop:Generator_RowDeletingName="dtTestCountRowDeleting" msprop:Generator_RowChangingName="dtTestCountRowChanging" msprop:Generator_RowEvHandlerName="dtTestCountRowChangeEventHandler" msprop:Generator_RowDeletedName="dtTestCountRowDeleted" msprop:Generator_UserTableName="dtTestCount" msprop:Generator_RowChangedName="dtTestCountRowChanged" msprop:Generator_RowEvArgName="dtTestCountRowChangeEvent" msprop:Generator_RowClassName="dtTestCountRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ShowTime" msprop:Generator_ColumnVarNameInTable="columnShowTime" msprop:Generator_ColumnPropNameInRow="ShowTime" msprop:Generator_ColumnPropNameInTable="ShowTimeColumn" msprop:Generator_UserColumnName="ShowTime" type="xs:string" minOccurs="0" />
+              <xs:element name="ShowValue" msprop:Generator_ColumnVarNameInTable="columnShowValue" msprop:Generator_ColumnPropNameInRow="ShowValue" msprop:Generator_ColumnPropNameInTable="ShowValueColumn" msprop:Generator_UserColumnName="ShowValue" type="xs:float" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeiFeiMidea", "HeiFeiMidea\HeiFeiMidea.csproj", "{3DEDF425-F217-4AFB-B3BF-E603131D5E99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeiFeiMideaDll", "HeiFeiMideaDll\HeiFeiMideaDll.csproj", "{DAAC50B3-A39E-4933-A9DB-F97FC96293CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeiFeiMideaPlayer", "HeiFeiMideaPlayer\HeiFeiMideaPlayer.csproj", "{F021222E-FC60-4E53-AC85-3E925FEC01B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "All", "..\..\TestAll\All\All.csproj", "{6838A3EA-032E-42E9-AFE0-61BDD58D953F}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://312637477.visualstudio.com/
+		SccProjectUniqueName0 = HeiFeiMideaDll\\HeiFeiMideaDll.csproj
+		SccProjectName0 = HeiFeiMideaDll
+		SccAuxPath0 = https://312637477.visualstudio.com
+		SccLocalPath0 = HeiFeiMideaDll
+		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName1 = HeiFeiMideaPlayer\\HeiFeiMideaPlayer.csproj
+		SccProjectName1 = HeiFeiMideaPlayer
+		SccAuxPath1 = https://312637477.visualstudio.com
+		SccLocalPath1 = HeiFeiMideaPlayer
+		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName2 = ..\\..\\TestAll\\All\\All.csproj
+		SccProjectName2 = ../../TestAll/All
+		SccAuxPath2 = https://312637477.visualstudio.com
+		SccLocalPath2 = ..\\..\\TestAll\\All
+		SccProvider2 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3DEDF425-F217-4AFB-B3BF-E603131D5E99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DEDF425-F217-4AFB-B3BF-E603131D5E99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DEDF425-F217-4AFB-B3BF-E603131D5E99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DEDF425-F217-4AFB-B3BF-E603131D5E99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAAC50B3-A39E-4933-A9DB-F97FC96293CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAAC50B3-A39E-4933-A9DB-F97FC96293CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAAC50B3-A39E-4933-A9DB-F97FC96293CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAAC50B3-A39E-4933-A9DB-F97FC96293CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F021222E-FC60-4E53-AC85-3E925FEC01B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F021222E-FC60-4E53-AC85-3E925FEC01B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F021222E-FC60-4E53-AC85-3E925FEC01B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F021222E-FC60-4E53-AC85-3E925FEC01B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6838A3EA-032E-42E9-AFE0-61BDD58D953F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6838A3EA-032E-42E9-AFE0-61BDD58D953F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6838A3EA-032E-42E9-AFE0-61BDD58D953F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6838A3EA-032E-42E9-AFE0-61BDD58D953F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
