@@ -8,10 +8,19 @@ namespace HeiFeiMideaPlayer
 {
     public class FlushNiuJu
     {
+        /// <summary>
+        /// 压机扭矩的螺丝数量
+        /// </summary>
         public int CountOne
         { get; set; }
+        /// <summary>
+        /// 风机扭矩第一工位的螺丝数量
+        /// </summary>
         public int CountTwo
         { get; set; }
+        /// <summary>
+        /// 风机扭矩第二工位的螺丝数量
+        /// </summary>
         public int CountThree
         { get; set; }
         //public delegate void NiuJuCountChangeHandle(int index, int count,int oldCount);

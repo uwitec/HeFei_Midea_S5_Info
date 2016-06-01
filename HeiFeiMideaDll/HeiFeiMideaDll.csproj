@@ -50,6 +50,7 @@
     <Compile Include="cDataLocal.cs" />
     <Compile Include="cError.cs" />
     <Compile Include="cErrorFrom.cs" />
+    <Compile Include="InfoLengNin.cs" />
     <Compile Include="cMain.cs" />
     <Compile Include="cModeSet.cs" />
     <Compile Include="cModeZheWangSet.cs" />

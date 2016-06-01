@@ -69,6 +69,7 @@ namespace HeiFeiMidea
             btnStopTime.Login = Login;
             btnTimeRefresh.Login = Login;
             btnSetTime.Login = Login;
+            btnLengNingSet.Login = Login;
         }
 
         private void btnInfo_Click(object sender, EventArgs e)
@@ -389,6 +390,12 @@ namespace HeiFeiMidea
         {
             frmSetTime fst = new frmSetTime();
             fst.ShowDialog();
+        }
+
+        private void btnLengNingSet_Click(object sender, EventArgs e)
+        {
+            frmUserLengNin fln = new frmUserLengNin();
+            fln.ShowDialog();
         }
     }
 }

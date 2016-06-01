@@ -77,10 +77,18 @@ namespace HeiFeiMideaPlayer
                     if (Value != "" && fLogin == null)
                     {
                         //员工条码登陆
-                        if ((Value.Length < 16) ||
-                           ((Value.Length % 2) == 0 && Value.Substring(0, Value.Length / 2) == Value.Substring(Value.Length / 2)))
+                        if ((Value.Length <= 13) ||
+                           ((Value.Length / 2 <= 13) && (Value.Length % 2) == 0 && Value.Substring(0, Value.Length / 2) == Value.Substring(Value.Length / 2)))
                         {
-                            CheckUser(Value.Trim());
+                            switch (frmMain.mMain.AllDataXml.LocalSettings.TestNo)
+                            {
+                                case 11:
+                                    CheckLengNinUser(Value.Trim());
+                                    break;
+                                default:
+                                    CheckUser(Value.Trim());
+                                    break;
+                            }
                         }
                         else//生产条码扫描
                         {
@@ -201,18 +209,32 @@ namespace HeiFeiMideaPlayer
             {
                 grpBarCode.Visible = false;
             }
-            if (frmMain.mMain.AllDataXml.LocalSettings.TestNo == 2 || frmMain.mMain.AllDataXml.LocalSettings.TestNo == 7)
+            if (frmMain.mMain.AllDataXml.LocalSettings.TestNo == 2 )
             {
                 mediaPlayer1.Visible = false;
                 picNiuJu.Size = panNiuJu.Size;
                 picNiuJu.Location = new Point(0, 0);
 
-                grpNiuJuResult.Visible = true;
-                grpNiuJuResult.Location = panEmptyOne.Location;
+                panYaJiNiuJu.Visible = true;
+                panYaJiNiuJu.Location = panEmptyOne.Location;
             }
             else
             {
-                grpNiuJuResult.Visible = false;
+                panYaJiNiuJu.Visible = false;
+                panYaJiNiuJu.Visible = false;
+            }
+            if (frmMain.mMain.AllDataXml.LocalSettings.TestNo == 7)
+            {
+                mediaPlayer1.Visible = false;
+                picNiuJu.Size = panNiuJu.Size;
+                picNiuJu.Location = new Point(0, 0);
+
+                panFengJi.Visible = true;
+                panFengJi.Location = panEmptyOne.Location;
+            }
+            else
+            {
+                panFengJi.Visible = false;
                 grpNiuJu.Visible = false;
             }
 
@@ -1290,12 +1312,16 @@ namespace HeiFeiMideaPlayer
                                                 buff.Add("BarCode", frmMain.mMain.CarLocal.AllStatueStation[0].BarCode);
                                                 frmMain.mMain.AllMeterData.AllCommunite[3].Sons[0].Write<string>(All.Class.SSFile.Dictionary2Text(buff), 0);
                                                 frmMain.mMain.AddInfo("电控条码判断通过");
+                                                lblDianKong11.BackColor = Color.Green;
+                                                lblDianKong21.BackColor = Color.Green;
                                                 return;
                                             }
                                             else
                                             {
                                                 if (frmMain.mMain.CarLocal.FengJiNowID[0] >= 4)
                                                 {
+                                                    lblDianKong11.BackColor = Color.Red;
+                                                    lblDianKong21.BackColor = Color.Red;
                                                     frmMain.mMain.AddInfo("电控条码判断失败");
                                                     return;
                                                 }
@@ -1307,8 +1333,10 @@ namespace HeiFeiMideaPlayer
                                                 buff.Add("TestBarCode", barCode);
                                                 buff.Add("BarCode", frmMain.mMain.CarLocal.AllStatueStation[0].BarCode);
                                                 frmMain.mMain.AllMeterData.AllCommunite[3].Sons[0].Write<string>(All.Class.SSFile.Dictionary2Text(buff), 1);
-                                                frmMain.mMain.AddInfo("电控条码判断通过");
+                                                frmMain.mMain.AddInfo("风机条码判断通过");
                                                 frmMain.mMain.CarLocal.FengJiNowID[0]++;
+                                                lblFengJi11.BackColor = Color.Green;
+                                                lblFengJi21.BackColor = Color.Green;
                                                 return;
                                             }
                                             frmMain.mMain.AddInfo("当前条码与风机和电控都不匹配");
@@ -1327,12 +1355,16 @@ namespace HeiFeiMideaPlayer
                                                 buff.Add("BarCode", frmMain.mMain.CarLocal.AllStatueStation[1].BarCode);
                                                 frmMain.mMain.AllMeterData.AllCommunite[3].Sons[0].Write<string>(All.Class.SSFile.Dictionary2Text(buff), 0);
                                                 frmMain.mMain.AddInfo("电控条码判断通过");
+                                                lblDianKong12.BackColor = Color.Green;
+                                                lblDianKong22.BackColor = Color.Green;
                                                 return;
                                             }
                                             else
                                             {
                                                 if (frmMain.mMain.CarLocal.FengJiNowID[1] >= 4)
                                                 {
+                                                    lblDianKong12.BackColor = Color.Red;
+                                                    lblDianKong22.BackColor = Color.Red;
                                                     frmMain.mMain.AddInfo("电控条码判断失败");
                                                     return;
                                                 }
@@ -1344,8 +1376,10 @@ namespace HeiFeiMideaPlayer
                                                 buff.Add("TestBarCode", barCode);
                                                 buff.Add("BarCode", frmMain.mMain.CarLocal.AllStatueStation[1].BarCode);
                                                 frmMain.mMain.AllMeterData.AllCommunite[3].Sons[0].Write<string>(All.Class.SSFile.Dictionary2Text(buff), 1);
-                                                frmMain.mMain.AddInfo("电控条码判断通过");
+                                                frmMain.mMain.AddInfo("风机条码判断通过");
                                                 frmMain.mMain.CarLocal.FengJiNowID[1]++;
+                                                lblFengJi12.BackColor = Color.Green;
+                                                lblFengJi22.BackColor = Color.Green;
                                                 return;
                                             }
                                             frmMain.mMain.AddInfo("当前条码与风机和电控都不匹配");
@@ -1470,16 +1504,26 @@ namespace HeiFeiMideaPlayer
                     case 0:
                         tmpNiuJu = picNiuJu;
                         lblNiuJuResult.Text = "";
+                        lblYaJiNiuJuResult.Text = "";
                         showOne = false;
                         TestOneOver = false;
+                        lblFengJi11.BackColor = Color.Red;
+                        lblDianKong11.BackColor = Color.Red;
+                        lblFengJi21.BackColor = Color.Red;
+                        lblDianKong21.BackColor = Color.Red;
                         break;
                     case 1:
                         tmpNiuJu = picNiuJu2;
                         lblNiuJuResult2.Text = "";
                         showTwo = false;
-                        TestTwoOver = false;
+                        lblFengJi12.BackColor = Color.Red;
+                        lblDianKong12.BackColor = Color.Red;
+                        lblFengJi22.BackColor = Color.Red;
+                        lblDianKong22.BackColor = Color.Red;
+                        //TestTwoOver = false;
                         break;
                 }
+                
                 foreach (Control c in tmpNiuJu.Controls)
                 {
                     c.Dispose();
@@ -1542,7 +1586,7 @@ namespace HeiFeiMideaPlayer
         bool showOne = false;
         bool showTwo = false;
         bool TestOneOver = false;
-        bool TestTwoOver = false;
+        //bool TestTwoOver = false;
         private void timNiuJu_Tick(object sender, EventArgs e)
         {
             oldNiuJuShow = !oldNiuJuShow;
@@ -1560,12 +1604,16 @@ namespace HeiFeiMideaPlayer
                                 {
                                     lblNiuJuResult.Text = "OK";
                                     lblNiuJuResult.ForeColor = Color.Green;
+                                    lblYaJiNiuJuResult.Text = "OK";
+                                    lblYaJiNiuJuResult.ForeColor = Color.Green;
                                     timNiuJu.Enabled = false;
                                 }
                                 else
                                 {
                                     lblNiuJuResult.Text = "Test";
                                     lblNiuJuResult.ForeColor = Color.Gold;
+                                    lblYaJiNiuJuResult.Text = "Test";
+                                    lblYaJiNiuJuResult.ForeColor = Color.Gold;
                                 }
                                 for (int i = 0; i < picNiuJu.Controls.Count; i++)
                                 {
@@ -1666,7 +1714,7 @@ namespace HeiFeiMideaPlayer
                                     lblNiuJuResult2.Text = "OK";
                                     lblNiuJuResult2.ForeColor = Color.Green;
                                     StopTimeTwo = true;
-                                    TestTwoOver = true;
+                                    //TestTwoOver = true;
                                 }
                                 else
                                 {
@@ -1706,10 +1754,14 @@ namespace HeiFeiMideaPlayer
                             }
                         }
                         else
-                        { TestTwoOver = true; }
+                        { 
+                            //TestTwoOver = true; 
+                        }
                     }
                     else
-                    { TestTwoOver = true; }
+                    { 
+                        //TestTwoOver = true; 
+                    }
                     if (StopTimeOne && StopTimeTwo)
                     {
                         timNiuJu.Enabled = false;
@@ -1923,6 +1975,63 @@ namespace HeiFeiMideaPlayer
         private void btnError_Click(object sender, EventArgs e)
         {
             cReport.Error(lblPrintBar.Text);
+        }
+        private void CheckLengNinUser(string userPassword)
+        {
+            bool tmpBool = false;
+            bool tmpLoginOk = false;
+
+            List<int> workStation = new List<int>();
+            string userName = "";
+            using (DataTable dt = frmMain.mMain.AllDataBase.FlushData.Read(string.Format("select * from SetUsersLengNin where UserPassword='{0}'", userPassword.Trim())))
+            {
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    userName = All.Class.Num.ToString(dt.Rows[0]["UserName"]);
+                    for (int i = 0; i < HeiFeiMideaDll.cMain.AllLengNinQiCount; i++)
+                    {
+                        tmpBool = All.Class.Num.ToBool(dt.Rows[0][string.Format("Use{0}", i)]);
+                        if (tmpBool)
+                        {
+                            workStation.Add(i + 1);
+                            tmpLoginOk = true;
+                        }
+                    }
+                }
+                else
+                {
+                    frmMain.mMain.AddInfo(string.Format("员工条码【{0}】没有找到对应的人员，请添加后登陆", userPassword.Trim()));
+                    return;
+                }
+            }
+            if (!tmpLoginOk)
+            {
+                frmMain.mMain.AddInfo(string.Format("【{0}】没有任何操作权限，登陆失败", userName));
+            }
+            else
+            {
+                //更改对应位置用户名
+                for (int i = 0; i < workStation.Count; i++)
+                {
+                    frmMain.mMain.AllDataBase.FlushData.Write(
+                        string.Format("Update InfoLengNinStation Set UserName='{0}' where workStation={1}", userName, workStation[i]));
+                }
+                //记录今天员工的操作状态
+                using (DataTable dt = frmMain.mMain.AllDataBase.FlushData.Read(string.Format("select UserName from StatueUserLogin where UserName='{0}'", userName)))
+                {
+                    if (dt == null || dt.Rows.Count <= 0)
+                    {
+                        frmMain.mMain.AllDataBase.FlushData.Write(
+                            string.Format("insert into StatueUserLogin (UserName,TestYear,TestMonth,Test{0:dd}) Values ('{1}',{0:yyyy},{0:MM},'true')", DateTime.Now, userName));
+                    }
+                    else
+                    {
+                        frmMain.mMain.AllDataBase.FlushData.Write(
+                            string.Format("update StatueUserLogin Set Test{0:dd}='true' where UserName='{1}'", DateTime.Now, userName));
+                    }
+                }
+                frmMain.mMain.AddInfo(string.Format("【{0}】登陆成功", userName));
+            }
         }
         /// <summary>
         /// 从密码判断员工登陆

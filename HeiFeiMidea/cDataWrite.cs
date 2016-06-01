@@ -33,6 +33,7 @@ namespace HeiFeiMidea
         public void ClearAllUser()
         {
             WriteData.Write("update InfoLineStation Set UserName=''");
+            WriteData.Write("update InfoLengNinStation Set UserName=''");
         }
         /// <summary>
         /// 清除当天OEE所有数据

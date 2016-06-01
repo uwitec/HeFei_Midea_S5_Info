@@ -21,12 +21,15 @@ namespace HeiFeiMidea
         Label[] lblW = new Label[HeiFeiMideaDll.cMain.AllLedSpace];//从W01工位到W20共20个工位带报警灯
         Label[] lblUser = new Label[HeiFeiMideaDll.cMain.AllStopStationCount];//所有须要登陆的重要岗位
         All.Control.Corner[] lblLine = new All.Control.Corner[HeiFeiMideaDll.cMain.AllStopStationCount];//所有须要登陆的重要岗位的连接线
+        Label[] lblLengNinUser = new Label[HeiFeiMideaDll.cMain.AllLengNinQiCount];
+        All.Control.Corner[] lblLengNinLine = new All.Control.Corner[HeiFeiMideaDll.cMain.AllLengNinQiCount];
         All.Control.Icon[] LittleStation = new All.Control.Icon[HeiFeiMideaDll.cMain.AllStopStationCount];
         All.Control.Icon[] McgsStation = new All.Control.Icon[HeiFeiMideaDll.cMain.AllTestComputer];
         Label[] McgsName = new Label[HeiFeiMideaDll.cMain.AllTestComputer];
         All.Control.Icon[] TestStation = new All.Control.Icon[4];
         All.Control.Icon[] LengNinStation = new All.Control.Icon[HeiFeiMideaDll.cMain.AllLengNinQiCount];
         All.Control.Icon[] StationOther = new All.Control.Icon[HeiFeiMideaDll.cMain.AllOtherMachineCount];
+
         public frmPlayLine()
         {
             InitializeComponent();
@@ -127,6 +130,16 @@ namespace HeiFeiMidea
                 LengNinStation[i].Tag = i + 1;
                 LengNinStation[i].MouseEnter += frmPlayLine_LengNingMouseEnter;
                 LengNinStation[i].MouseLeave += frmPlayLine_LengNingMouseLevel;
+                tmpFindControl = panLine.Controls.Find(string.Format("lblLengNinUser{0}", i), false);
+                if (tmpFindControl != null && tmpFindControl.Length > 0)
+                {
+                    lblLengNinUser[i] = (Label)tmpFindControl[0];
+                }
+                tmpFindControl = panLine.Controls.Find(string.Format("lblLengNinLine{0}", i), false);
+                if (tmpFindControl != null && tmpFindControl.Length > 0)
+                {
+                    lblLengNinLine[i] = (All.Control.Corner)tmpFindControl[0];
+                }
             }
             for (int i = 0; i < StationOther.Length; i++)
             {
@@ -468,6 +481,29 @@ namespace HeiFeiMidea
                 if (lblLine[i] != null)
                 {
                     lblLine[i].Visible = frmMain.mMain.FlushUserLogin.AllUserStatue[i].HaveUser;
+                }
+            }
+            for (int i = 0; i < frmMain.mMain.FlushUserLogin.LengNinUserStatue.Length; i++)
+            {
+                if (lblLengNinUser[i] != null)
+                {
+                    lblLengNinUser[i].Visible = frmMain.mMain.FlushUserLogin.LengNinUserStatue[i].HaveUser;
+                    if (frmMain.mMain.FlushUserLogin.LengNinUserStatue[i].LoginUser)
+                    {
+                        lblLengNinUser[i].ForeColor = Color.Green;
+                    }
+                    else if (!blinkShow)
+                    {
+                        lblLengNinUser[i].ForeColor = Color.FromArgb(255, 40, 40, 40);
+                    }
+                    else
+                    {
+                        lblLengNinUser[i].ForeColor = Color.Purple;
+                    }
+                }
+                if (lblLengNinLine[i] != null)
+                {
+                    lblLengNinLine[i].Visible = frmMain.mMain.FlushUserLogin.LengNinUserStatue[i].HaveUser;
                 }
             }
             #endregion

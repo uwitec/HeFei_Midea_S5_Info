@@ -63,6 +63,17 @@ namespace HeiFeiMideaDll
                 return conn.Write(string.Format("delete from SetUsers where UserName='{0}'", userName)) >= 1;
             }
             /// <summary>
+            /// 修改用户密码
+            /// </summary>
+            /// <param name="user"></param>
+            /// <param name="password"></param>
+            /// <param name="conn"></param>
+            /// <returns></returns>
+            public static bool UpdatePassword(string user, string password, All.Class.DataReadAndWrite conn)
+            {
+                return conn.Write(string.Format("update SetUsers Set UserPassword='{0}' where UserName='{1}'", password, user)) >= 1;
+            }
+            /// <summary>
             /// 更新用户
             /// </summary>
             /// <param name="user"></param>

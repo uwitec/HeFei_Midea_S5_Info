@@ -59,6 +59,7 @@ namespace HeiFeiMidea
             }
             if(HeiFeiMideaDll.UserSet.InsertUser(new HeiFeiMideaDll.UserSet(txtName.Text, txtPassword.Text),frmMain.mMain.AllDataBase.LocalData))
             {
+                HeiFeiMideaDll.LengNinUser.InsertUser(new HeiFeiMideaDll.LengNinUser(txtName.Text, txtPassword.Text), frmMain.mMain.AllDataBase.LocalData);
                 All.Window.MessageBox.Show(this, string.Format("当前用户【{0}】已成功添加到数据库", txtName.Text), "用户添加成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }

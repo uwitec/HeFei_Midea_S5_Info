@@ -101,7 +101,7 @@ namespace HeiFeiMideaPlayer
         /// <summary>
         /// 条码改变时切换订单，影像专用
         /// </summary>
-        public event GetOrderFromChangeBarHandle GetOrderFromChangeBar;
+        //public event GetOrderFromChangeBarHandle GetOrderFromChangeBar;
         public cCarLocal()
         {
             ModeIDChangeOne = false;

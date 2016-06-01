@@ -108,11 +108,11 @@
     <Compile Include="FlushSingleZheWang.cs" />
     <Compile Include="FlushStationStatue.cs" />
     <Compile Include="FlushTimeOut.cs" />
-    <Compile Include="frmLenNingUser.cs">
+    <Compile Include="frmUserLengNin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLenNingUser.Designer.cs">
-      <DependentUpon>frmLenNingUser.cs</DependentUpon>
+    <Compile Include="frmUserLengNin.Designer.cs">
+      <DependentUpon>frmUserLengNin.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMessageError.cs">
       <SubType>Form</SubType>
@@ -362,8 +362,8 @@
     <Compile Include="Report\frmMainList.Designer.cs">
       <DependentUpon>frmMainList.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="frmLenNingUser.resx">
-      <DependentUpon>frmLenNingUser.cs</DependentUpon>
+    <EmbeddedResource Include="frmUserLengNin.resx">
+      <DependentUpon>frmUserLengNin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMessageError.resx">
       <DependentUpon>frmMessageError.cs</DependentUpon>

@@ -34,7 +34,7 @@ namespace HeiFeiMidea
 
             TreeNode tnR0;
             TreeNode tnR1;
-            string tmpName = "";
+            //string tmpName = "";
 
             treeError.Nodes.Add(CreatNode("所有故障列表",0,true));
             treeStation.Nodes.Add(CreatNode("所有工位列表", 0, false));

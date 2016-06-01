@@ -60,8 +60,9 @@ namespace HeiFeiMidea
                 if (tmpIndex >= 0)
                 {
                     allUsers[tmpIndex].Word = txtPassword.Text;
-                    if (HeiFeiMideaDll.UserSet.UpdateUser(allUsers[tmpIndex],frmMain.mMain.AllDataBase.LocalData))
+                    if (HeiFeiMideaDll.UserSet.UpdatePassword(allUsers[tmpIndex].Text, allUsers[tmpIndex].Word, frmMain.mMain.AllDataBase.LocalData))
                     {
+                        HeiFeiMideaDll.LengNinUser.UpdatePassword(allUsers[tmpIndex].Text, allUsers[tmpIndex].Word, frmMain.mMain.AllDataBase.LocalData);
                         All.Window.MetroMessageBox.Show(this, string.Format("当前选定的用户【{0}】密码已成功修改为新密码！", cbbName.Text), "修改成功！", MessageBoxButtons.OK,MessageBoxIcon.Information);
                     }
                     else
@@ -86,6 +87,7 @@ namespace HeiFeiMidea
             }
             if (HeiFeiMideaDll.UserSet.DeleteUser(cbbName.Text,frmMain.mMain.AllDataBase.LocalData))
             {
+                HeiFeiMideaDll.LengNinUser.DeleteUser(cbbName.Text, frmMain.mMain.AllDataBase.LocalData);
                 All.Window.MetroMessageBox.Show(this, string.Format("当前选定的用户【{0}】已成功从数据库删除！", cbbName.Text), "删除成功！", MessageBoxButtons.OK);
                 InitUser();
             }
