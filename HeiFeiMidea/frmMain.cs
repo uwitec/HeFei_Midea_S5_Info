@@ -12,6 +12,10 @@ namespace HeiFeiMidea
 {
     public partial class frmMain : All.Window.MainWindow
     {
+        bool autoPlay = true;
+        int autoPlayTimeOut = 10;
+
+
         bool exit = false;
         public static cMain mMain = new cMain();
         All.Window.PlayWindow.AutoPlayOneByOne[] PlayThree = new All.Window.PlayWindow.AutoPlayOneByOne[3];
@@ -25,6 +29,7 @@ namespace HeiFeiMidea
             mMain.Load();
             mMain.Run();
             SetEnable(false);
+            timAutoPlay.Enabled = true;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -175,6 +180,8 @@ namespace HeiFeiMidea
         }
         private void btnStation_Click(object sender, EventArgs e)
         {
+            autoPlay = false;
+
             frmSetStation fss = new frmSetStation();
             fss.ShowDialog();
         }
@@ -396,6 +403,25 @@ namespace HeiFeiMidea
         {
             frmUserLengNin fln = new frmUserLengNin();
             fln.ShowDialog();
+        }
+
+        private void timAutoPlay_Tick(object sender, EventArgs e)
+        {
+            if (autoPlay)
+            {
+                autoPlayTimeOut--;
+                if (autoPlayTimeOut <= 0)
+                {
+                    autoPlay = false;
+                    btnPlay_Click(btnPlay, new EventArgs());
+                }
+            }
+            else
+            {
+                autoPlayTimeOut = 10;
+                timAutoPlay.Enabled = false;
+                timAutoPlay.Stop();
+            }
         }
     }
 }
