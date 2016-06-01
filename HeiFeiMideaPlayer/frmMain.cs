@@ -2119,6 +2119,11 @@ namespace HeiFeiMideaPlayer
 
         }
 
+        private void lblText_DoubleClick(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
     public class ErrorIn
     {

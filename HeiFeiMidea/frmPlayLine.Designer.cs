@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPlayLine));
             this.panLine = new System.Windows.Forms.Panel();
+            this.label23 = new System.Windows.Forms.Label();
+            this.corner55 = new All.Control.Corner();
             this.label22 = new System.Windows.Forms.Label();
             this.corner54 = new All.Control.Corner();
             this.label21 = new System.Windows.Forms.Label();
@@ -325,6 +327,8 @@
             // panLine
             // 
             this.panLine.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panLine.Controls.Add(this.label23);
+            this.panLine.Controls.Add(this.corner55);
             this.panLine.Controls.Add(this.label22);
             this.panLine.Controls.Add(this.corner54);
             this.panLine.Controls.Add(this.label21);
@@ -581,6 +585,32 @@
             this.panLine.Name = "panLine";
             this.panLine.Size = new System.Drawing.Size(1247, 367);
             this.panLine.TabIndex = 16;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label23.ForeColor = System.Drawing.Color.White;
+            this.label23.Location = new System.Drawing.Point(728, 240);
+            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(69, 17);
+            this.label23.TabIndex = 320;
+            this.label23.Text = "系统焊接";
+            // 
+            // corner55
+            // 
+            this.corner55.BackColor = System.Drawing.Color.Black;
+            this.corner55.Bold = 1;
+            this.corner55.Font = new System.Drawing.Font("宋体", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.corner55.ForeColor = System.Drawing.Color.Olive;
+            this.corner55.Location = new System.Drawing.Point(717, 200);
+            this.corner55.Margin = new System.Windows.Forms.Padding(4);
+            this.corner55.Name = "corner55";
+            this.corner55.Size = new System.Drawing.Size(45, 36);
+            this.corner55.Space = All.Control.Corner.SpaceList.LeftTop2RightBottom;
+            this.corner55.TabIndex = 321;
+            this.corner55.Text = "corner55";
             // 
             // label22
             // 
@@ -2648,10 +2678,10 @@
             this.corner10.Bold = 1;
             this.corner10.Font = new System.Drawing.Font("宋体", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.corner10.ForeColor = System.Drawing.Color.Olive;
-            this.corner10.Location = new System.Drawing.Point(813, 227);
+            this.corner10.Location = new System.Drawing.Point(813, 229);
             this.corner10.Margin = new System.Windows.Forms.Padding(4);
             this.corner10.Name = "corner10";
-            this.corner10.Size = new System.Drawing.Size(19, 12);
+            this.corner10.Size = new System.Drawing.Size(16, 10);
             this.corner10.Space = All.Control.Corner.SpaceList.LeftTop2RightBottom;
             this.corner10.TabIndex = 147;
             this.corner10.Text = "corner10";
@@ -5185,5 +5215,7 @@
         private All.Control.Corner corner52;
         private System.Windows.Forms.Label label19;
         private All.Control.Corner corner51;
+        private System.Windows.Forms.Label label23;
+        private All.Control.Corner corner55;
     }
 }
