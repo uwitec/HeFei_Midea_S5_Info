@@ -12,26 +12,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "All", "..\..\TestAll\All\All.csproj", "{6838A3EA-032E-42E9-AFE0-61BDD58D953F}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://312637477.visualstudio.com/
-		SccProjectUniqueName0 = HeiFeiMideaDll\\HeiFeiMideaDll.csproj
-		SccProjectName0 = HeiFeiMideaDll
-		SccAuxPath0 = https://312637477.visualstudio.com
-		SccLocalPath0 = HeiFeiMideaDll
-		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName1 = HeiFeiMideaPlayer\\HeiFeiMideaPlayer.csproj
-		SccProjectName1 = HeiFeiMideaPlayer
-		SccAuxPath1 = https://312637477.visualstudio.com
-		SccLocalPath1 = HeiFeiMideaPlayer
-		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName2 = ..\\..\\TestAll\\All\\All.csproj
-		SccProjectName2 = ../../TestAll/All
-		SccAuxPath2 = https://312637477.visualstudio.com
-		SccLocalPath2 = ..\\..\\TestAll\\All
-		SccProvider2 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
