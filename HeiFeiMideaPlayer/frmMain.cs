@@ -235,9 +235,13 @@ namespace HeiFeiMideaPlayer
             else
             {
                 panFengJi.Visible = false;
+            }
+            if (frmMain.mMain.AllDataXml.LocalSettings.TestNo == 7 || frmMain.mMain.AllDataXml.LocalSettings.TestNo == 2)
+            { }
+            else
+            {
                 grpNiuJu.Visible = false;
             }
-
             if (frmMain.mMain.AllDataXml.LocalSettings.TestNo == 5)
             {
                 grpLenNingQi.Visible = true;
@@ -1503,8 +1507,9 @@ namespace HeiFeiMideaPlayer
                 {
                     case 0:
                         tmpNiuJu = picNiuJu;
-                        lblNiuJuResult.Text = "";
                         lblYaJiNiuJuResult.Text = "";
+                        lblNiuJuResult1.Text = "";
+
                         showOne = false;
                         TestOneOver = false;
                         lblFengJi11.BackColor = Color.Red;
@@ -1602,16 +1607,12 @@ namespace HeiFeiMideaPlayer
                                 All.Control.Shape tmpShape;
                                 if (frmMain.mMain.FlushNiuJu.CountOne == picNiuJu.Controls.Count)
                                 {
-                                    lblNiuJuResult.Text = "OK";
-                                    lblNiuJuResult.ForeColor = Color.Green;
                                     lblYaJiNiuJuResult.Text = "OK";
                                     lblYaJiNiuJuResult.ForeColor = Color.Green;
                                     timNiuJu.Enabled = false;
                                 }
                                 else
                                 {
-                                    lblNiuJuResult.Text = "Test";
-                                    lblNiuJuResult.ForeColor = Color.Gold;
                                     lblYaJiNiuJuResult.Text = "Test";
                                     lblYaJiNiuJuResult.ForeColor = Color.Gold;
                                 }
@@ -1655,16 +1656,16 @@ namespace HeiFeiMideaPlayer
                                 All.Control.Shape tmpShape;
                                 if (frmMain.mMain.FlushNiuJu.CountTwo == picNiuJu.Controls.Count)
                                 {
-                                    lblNiuJuResult.Text = "OK";
-                                    lblNiuJuResult.ForeColor = Color.Green;
+                                    lblNiuJuResult1.Text = "OK";
+                                    lblNiuJuResult1.ForeColor = Color.Green;
                                     StopTimeOne = true;
                                     TestOneOver = true;
                                 }
                                 else
                                 {
                                     StopTimeOne = false;
-                                    lblNiuJuResult.Text = "Test";
-                                    lblNiuJuResult.ForeColor = Color.Gold;
+                                    lblNiuJuResult1.Text = "Test";
+                                    lblNiuJuResult1.ForeColor = Color.Gold;
                                     if (!showOne)
                                     {
                                         tabControl1.SelectedTab = tabTestOne;

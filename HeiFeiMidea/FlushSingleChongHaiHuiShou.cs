@@ -18,8 +18,8 @@ namespace HeiFeiMidea
             {
                 if (oldConn != frmMain.mMain.AllMeterData.AllCommunite[31].Sons[0].Conn)
                 {
-                    frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("氦检回收工位  通讯失败"), (oldConn ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del)));
-                    frmMain.mMain.FlushAllError.Change(FlushAllError.SpaceList.氦检回收, "氦检回收工位 通讯失败", (oldConn ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del));
+                    frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("检大漏,氦检工位  通讯失败"), (oldConn ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del)));
+                    frmMain.mMain.FlushAllError.Change(FlushAllError.SpaceList.氦检回收, "检大漏,氦检工位 通讯失败", (oldConn ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del));
                     oldConn = frmMain.mMain.AllMeterData.AllCommunite[31].Sons[0].Conn;
                 }
                 return haiJianHuiShou.Error || (!frmMain.mMain.AllMeterData.AllCommunite[31].Sons[0].Conn);

@@ -67,7 +67,7 @@ namespace HeiFeiMidea
             
 
             chartHour.Palette = ChartColorPalette.None;
-            chartHour.PaletteCustomColors = new Color[] { Color.DarkOrange };
+            chartHour.PaletteCustomColors = new Color[] { Color.Green };
             #endregion
             #region//订单
             
@@ -145,7 +145,7 @@ namespace HeiFeiMidea
             #endregion
             #region//故障前三位
             
-            title = new Title("故障前三位", Docking.Top, new Font("宋体", 16, FontStyle.Bold), Color.White);
+            title = new Title("内部缺陷前三位", Docking.Top, new Font("宋体", 16, FontStyle.Bold), Color.White);
             chartError.Titles.Add(title);
             //图示
             chartError.Legends[0].Enabled = false;
@@ -178,7 +178,7 @@ namespace HeiFeiMidea
             chartError.Series[0].LabelFormat = "{0}(次)";
 
             chartError.Palette = ChartColorPalette.None;
-            chartError.PaletteCustomColors = new Color[] { Color.Purple };
+            chartError.PaletteCustomColors = new Color[] { Color.Orange };
             #endregion
             InitOEEGrid();
         }
@@ -207,8 +207,8 @@ namespace HeiFeiMidea
             dataGridView1.Rows[3].Height = 27;
             dataGridView1.Rows[0].Cells[0].Value = "时间段";
             dataGridView1.Rows[1].Cells[0].Value = "实际产出";
-            dataGridView1.Rows[2].Cells[0].Value = "产出比";
-            dataGridView1.Rows[3].Cells[0].Value = "OEE图";
+            dataGridView1.Rows[2].Cells[0].Value = "OEE";
+            dataGridView1.Rows[3].Cells[0].Value = "表现";
             DataGridViewImageCell imageCell;
             for (int i = 0; i < frmMain.mMain.FlushOEE.OEETimes.Count; i++)
             {

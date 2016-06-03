@@ -286,8 +286,8 @@ namespace HeiFeiMidea
                     allOEETimes.ForEach(
                         oee =>
                         {
-                            result=result && (frmMain.mMain.AllDataBase.WriteData.Write(string.Format("insert into SetTime (HourStart,MinStart,HourEnd,MinEnd,UseTime) values ({0},{1},{2},{3},'{4}')",
-                                oee.HourStart, oee.MinStart, oee.HourEnd, oee.MinEnd,oee.UseTime)) == 1);
+                            result = result && (frmMain.mMain.AllDataBase.WriteData.Write(string.Format("insert into SetTime (HourStart,MinStart,HourEnd,MinEnd,UseTime) values ({0},{1},{2},{3},'{4}')",
+                                oee.HourStart, oee.MinStart, oee.HourEnd, oee.MinEnd, oee.UseTime)) == 1);
                         });
                 }
                 return result;
