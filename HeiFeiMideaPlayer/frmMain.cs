@@ -822,6 +822,7 @@ namespace HeiFeiMideaPlayer
                 }
                 if (lblNextBar.Text != "")
                 {
+                    All.Class.Error.Add("btnPrint_Click");
                     btnPrint.Enabled = false;
                     frmMain.mMain.AiWrite.PrintBar(lblNextBar.Text, HeiFeiMideaDll.cMain.AllComputerList.上线);
                 }
@@ -1573,7 +1574,7 @@ namespace HeiFeiMideaPlayer
                     {
                         led = new All.Control.Shape();
                         led.Name = string.Format("Led{0}{1}",index, i); 
-                        led.Left = frmMain.mMain.CarLocal.NiuJu[index].Sons[i].X;
+                        led.Left = frmMain.mMain.CarLocal.NiuJu[index].Sons[i].X ;
                         led.Top = frmMain.mMain.CarLocal.NiuJu[index].Sons[i].Y;
                         led.Width = frmMain.mMain.CarLocal.NiuJu[index].Sons[i].Width;
                         led.Height = frmMain.mMain.CarLocal.NiuJu[index].Sons[i].Height;
@@ -2111,8 +2112,10 @@ namespace HeiFeiMideaPlayer
                 dr["CallOver"] = true;
                 dr["ErrorFrom"] = fer.Source;
                 dr["ErrorSpace"] = fer.ErrorWorkStation.ToString();
+                frmMain.mMain.AddInfo(string.Format("录入故障{0}", fer.Error));
                 dt.Rows.Add(dr);
             }
+            fer.Dispose();
         }
 
         private void dgvError_Click(object sender, EventArgs e)

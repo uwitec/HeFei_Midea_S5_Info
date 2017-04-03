@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeiFeiMideaPlayer", "HeiFei
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "All", "..\..\TestAll\All\All.csproj", "{6838A3EA-032E-42E9-AFE0-61BDD58D953F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintFile", "PrintFile\PrintFile.csproj", "{7FF5EBB3-CB1D-46C4-BD05-D75B5B1C42D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndoorUpdata", "IndoorUpdata\IndoorUpdata.csproj", "{F464A050-5C0C-44C8-A31F-6C846638F66D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{6838A3EA-032E-42E9-AFE0-61BDD58D953F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6838A3EA-032E-42E9-AFE0-61BDD58D953F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6838A3EA-032E-42E9-AFE0-61BDD58D953F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FF5EBB3-CB1D-46C4-BD05-D75B5B1C42D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FF5EBB3-CB1D-46C4-BD05-D75B5B1C42D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FF5EBB3-CB1D-46C4-BD05-D75B5B1C42D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FF5EBB3-CB1D-46C4-BD05-D75B5B1C42D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F464A050-5C0C-44C8-A31F-6C846638F66D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F464A050-5C0C-44C8-A31F-6C846638F66D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F464A050-5C0C-44C8-A31F-6C846638F66D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F464A050-5C0C-44C8-A31F-6C846638F66D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

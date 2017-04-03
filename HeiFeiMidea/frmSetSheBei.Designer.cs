@@ -35,9 +35,6 @@
             this.btnClose = new All.Control.Metro.TitleButton();
             this.panSize = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnSave = new All.Control.Metro.PicButton();
-            this.openAi = new System.Windows.Forms.OpenFileDialog();
             this.colImage = new System.Windows.Forms.DataGridViewImageColumn();
             this.colSheBei = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLast = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +43,10 @@
             this.colOk = new System.Windows.Forms.DataGridViewButtonColumn();
             this.colVideo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colOpen = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSave = new All.Control.Metro.PicButton();
+            this.openAi = new System.Windows.Forms.OpenFileDialog();
+            this.btnError = new All.Control.Metro.PicButton();
             this.panSize.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -99,31 +100,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(714, 303);
             this.dataGridView1.TabIndex = 65;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnSave);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 303);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(714, 47);
-            this.panel1.TabIndex = 64;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSave.BackImage = null;
-            this.btnSave.Border = true;
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(601, 11);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.PicBackColor = System.Drawing.Color.Black;
-            this.btnSave.Size = new System.Drawing.Size(89, 28);
-            this.btnSave.Style = All.Control.Metro.PicButton.Styles.Button;
-            this.btnSave.TabIndex = 73;
-            this.btnSave.Text = "保存";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // colImage
             // 
@@ -187,6 +163,48 @@
             this.colOpen.HeaderText = "设备资料";
             this.colOpen.Name = "colOpen";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnError);
+            this.panel1.Controls.Add(this.btnSave);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 303);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(714, 47);
+            this.panel1.TabIndex = 64;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSave.BackImage = null;
+            this.btnSave.Border = true;
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(601, 11);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.PicBackColor = System.Drawing.Color.Black;
+            this.btnSave.Size = new System.Drawing.Size(89, 28);
+            this.btnSave.Style = All.Control.Metro.PicButton.Styles.Button;
+            this.btnSave.TabIndex = 73;
+            this.btnSave.Text = "保存";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnError
+            // 
+            this.btnError.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnError.BackColor = System.Drawing.SystemColors.Control;
+            this.btnError.BackImage = null;
+            this.btnError.Border = true;
+            this.btnError.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnError.Location = new System.Drawing.Point(492, 11);
+            this.btnError.Name = "btnError";
+            this.btnError.PicBackColor = System.Drawing.Color.Black;
+            this.btnError.Size = new System.Drawing.Size(89, 28);
+            this.btnError.Style = All.Control.Metro.PicButton.Styles.Button;
+            this.btnError.TabIndex = 74;
+            this.btnError.Text = "故障显示";
+            this.btnError.Click += new System.EventHandler(this.btnError_Click);
+            // 
             // frmSetSheBei
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -223,5 +241,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn colOk;
         private System.Windows.Forms.DataGridViewTextBoxColumn colVideo;
         private System.Windows.Forms.DataGridViewButtonColumn colOpen;
+        private All.Control.Metro.PicButton btnError;
     }
 }

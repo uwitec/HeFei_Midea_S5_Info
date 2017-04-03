@@ -47,7 +47,6 @@
                   <DataElementOutput>Output</DataElementOutput>
                 </ChartDataPoint>
               </ChartDataPoints>
-              <Type>Bar</Type>
               <Style />
               <ChartEmptyPoints>
                 <Style />
@@ -58,12 +57,6 @@
                   <Style />
                 </ChartDataLabel>
               </ChartEmptyPoints>
-              <CustomProperties>
-                <CustomProperty>
-                  <Name>DrawingStyle</Name>
-                  <Value>Cylinder</Value>
-                </CustomProperty>
-              </CustomProperties>
               <ChartItemInLegend>
                 <LegendText>出勤天数</LegendText>
               </ChartItemInLegend>
@@ -89,6 +82,7 @@
                     <FontSize>8pt</FontSize>
                   </Style>
                 </ChartAxisTitle>
+                <Interval>1</Interval>
                 <VariableAutoInterval>true</VariableAutoInterval>
                 <ChartMajorGridLines>
                   <Enabled>False</Enabled>
@@ -282,7 +276,7 @@
         </ChartNoDataMessage>
         <DataSetName>dtUserLogin</DataSetName>
         <Left>0.07938cm</Left>
-        <Height>25cm</Height>
+        <Height>15.21042cm</Height>
         <Width>25cm</Width>
         <Style>
           <Border>
@@ -294,7 +288,7 @@
         </Style>
       </Chart>
     </ReportItems>
-    <Height>9.84252in</Height>
+    <Height>5.98835in</Height>
     <Style />
   </Body>
   <Width>9.87377in</Width>

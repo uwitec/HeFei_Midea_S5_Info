@@ -178,6 +178,7 @@ namespace HeiFeiMidea
                         if (value)
                         {
                             frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("[{0}]未登陆系统", this.UserName), FlushAllError.ChangeList.Add));
+
                         }
                     }
                     haveUser = value;

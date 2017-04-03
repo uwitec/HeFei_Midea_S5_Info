@@ -46,7 +46,11 @@ namespace HeiFeiMidea
                     if (connect != frmMain.mMain.AllMeterData.AllCommunite[HeiFeiMideaDll.cMain.RemotWriteStart + WorkStation - 1].Sons[0].Conn)
                     {
                         frmMain.mMain.FlushAllError.Change(FlushAllError.SpaceList.工位屏, WorkStation, frmMain.mMain.AllMeterData.AllCommunite[HeiFeiMideaDll.cMain.RemotWriteStart + WorkStation - 1].Sons[0].Conn ? FlushAllError.ChangeList.Del : FlushAllError.ChangeList.Add);
-                        frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("{0}  通讯故障", frmMain.mMain.AllCars.AllInfoStation[WorkStation].StationName), (connect ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del)));
+
+                        if (frmMain.mMain.AllDataXml.ErrorShow.Show(FlushAllError.SpaceList.工位屏))
+                        {
+                            frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("{0}  通讯故障", frmMain.mMain.AllCars.AllInfoStation[WorkStation].StationName), (connect ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del)));
+                        }
                     }
                     connect = frmMain.mMain.AllMeterData.AllCommunite[HeiFeiMideaDll.cMain.RemotWriteStart + WorkStation - 1].Sons[0].Conn;
                         
@@ -104,6 +108,11 @@ namespace HeiFeiMidea
             /// </summary>
             public List<int> SlowAverageTime
             { get; set; }
+            /// <summary>
+            /// 标准时间
+            /// </summary>
+            public List<int> SetTime
+            { get; set; }
             public StatueTick()
             {
                 StationName = new List<string>();
@@ -112,6 +121,7 @@ namespace HeiFeiMidea
                 MaxTime = new List<int>();
                 SlowName = new List<string>();
                 SlowAverageTime = new List<int>();
+                SetTime = new List<int>();
             }
         }
         #endregion

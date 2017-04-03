@@ -110,6 +110,10 @@ namespace HeiFeiMidea
         /// </summary>
         public FlushTimeOut FlushTimeOut;
         /// <summary>
+        /// 刷新今日工位作业时间
+        /// </summary>
+        public FlushStationTestTime FlushStationTestTime;
+        /// <summary>
         /// 刷新 PLC
         /// </summary>
         public FlushPlc FlushPlc;
@@ -269,6 +273,10 @@ namespace HeiFeiMidea
             FlushSingleYaSuoJi = new FlushSingleYaSuoJi();
             FlushSingleYaSuoJi.FlushTick = 100;
             FlushAll.Add(FlushSingleYaSuoJi);
+
+            FlushStationTestTime = new HeiFeiMidea.FlushStationTestTime();
+            FlushStationTestTime.FlushTick = 1000;
+            FlushAll.Add(FlushStationTestTime);
 
             FlushAll.Add(FlushAllError);
 

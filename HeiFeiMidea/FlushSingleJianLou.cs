@@ -18,7 +18,10 @@ namespace HeiFeiMidea
             {
                 if (oldConn != frmMain.mMain.AllMeterData.AllCommunite[30].Sons[0].Conn)
                 {
-                    frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("氦检工位 {0} 通讯失败", ""), (oldConn ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del)));
+                    if (frmMain.mMain.AllDataXml.ErrorShow.Show(FlushAllError.SpaceList.真空氦检))
+                    {
+                        frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("氦检工位 {0} 通讯失败", ""), (oldConn ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del)));
+                    }
                     frmMain.mMain.FlushAllError.Change(FlushAllError.SpaceList.真空氦检, "氦检工位 通讯失败", (oldConn ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del));
                     oldConn = frmMain.mMain.AllMeterData.AllCommunite[30].Sons[0].Conn;
                 }
@@ -302,7 +305,10 @@ namespace HeiFeiMidea
                 if (ErrorSingle[index] != error)
                 {
                     ErrorSingle[index] = error;
-                    frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("氦检工位 {0} 故障", info), (error ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del)));
+                    if (frmMain.mMain.AllDataXml.ErrorShow.Show(FlushAllError.SpaceList.真空氦检))
+                    {
+                        frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("氦检工位 {0} 故障", info), (error ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del)));
+                    }
                     frmMain.mMain.FlushAllError.Change(FlushAllError.SpaceList.真空氦检, info, error ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del);
                 }
             }

@@ -90,10 +90,10 @@ namespace HeiFeiMidea
             //OEE
             dt = frmMain.mMain.AllDataBase.ReportData.Read(string.Format("select * from TestCount where TestYear={0:yyyy} and TestMonth={0:MM}", timeMonth));
             DataTable dtOEE = new DataTable();
+            dtOEE.Columns.Add("TimeShow", typeof(string));
             dtOEE.Columns.Add("AllCount", typeof(int));
             dtOEE.Columns.Add("AllTime", typeof(int));
             dtOEE.Columns.Add("OEEValue", typeof(float));
-            dtOEE.Columns.Add("TimeShow", typeof(string));
             int AllTime = 0;
             int AllCount = 0;
             if (dt != null && dt.Rows.Count > 0)
@@ -105,15 +105,14 @@ namespace HeiFeiMidea
                     if (AllTime > 0)
                     {
                         dr = dtOEE.NewRow();
+                        dr["TimeShow"] = i + 1;
                         dr["AllCount"] = AllCount;
                         dr["AllTime"] = AllTime;
                         dr["OEEValue"] = (float)((AllCount * 60) / (float)AllTime) / frmMain.mMain.AllDataXml.LocalSet.OEECount;
-                        dr["TimeShow"] = string.Format("{0}号", i + 1);
                         dtOEE.Rows.Add(dr);
                     }
                 }
             }
-
             rptOEEChart.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("dtOEE", dtOEE));
             rptOEEDetial.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("dtOEE", dtOEE));
 

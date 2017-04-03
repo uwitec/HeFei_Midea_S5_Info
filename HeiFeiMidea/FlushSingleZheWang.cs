@@ -42,7 +42,10 @@ namespace HeiFeiMidea
         {
             if (zheWang.Connect != frmMain.mMain.AllMeterData.AllCommunite[33].Sons[0].Conn)
             {
-                frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info("折弯机通讯故障", (zheWang.Connect ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del)));
+                if (frmMain.mMain.AllDataXml.ErrorShow.Show(FlushAllError.SpaceList.折弯机))
+                {
+                    frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info("折弯机通讯故障", (zheWang.Connect ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del)));
+                }
                 frmMain.mMain.FlushAllError.Change(FlushAllError.SpaceList.折弯机, zheWang.Connect ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del);
             }
             zheWang.Connect = frmMain.mMain.AllMeterData.AllCommunite[33].Sons[0].Conn;

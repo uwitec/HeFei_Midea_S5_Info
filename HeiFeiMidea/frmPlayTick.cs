@@ -78,8 +78,6 @@ namespace HeiFeiMidea
             //3D
             //chart1.ChartAreas[0].Area3DStyle.Enable3D = true;
             //图形类型
-            chart2.Series[0].ChartType = SeriesChartType.Column;
-            chart2.Series[0].IsValueShownAsLabel = true;
 
             chart2.ChartAreas[0].AxisX.Interval = 1;
             chart2.ChartAreas[0].AxisX.LineColor = Color.White;
@@ -95,15 +93,26 @@ namespace HeiFeiMidea
             //chart1.Series[0]["DrawingStyle"] = "Cylinder";//圆柱
 
 
+            chart2.Series[0].ChartType = SeriesChartType.Column;
+            chart2.Series[0].IsValueShownAsLabel = true;
             chart2.Series[0].LabelForeColor = Color.White;//圆柱上方文字颜色
             chart2.Series[0].Font = new Font("黑体", 10, FontStyle.Bold);//圆柱上方文字字体
             chart2.Series[0]["ColumnLabelStyle"] = "center";
             chart2.Series[0].LegendText = "平均节拍(秒)";
             chart2.Series[0].LabelFormat = "{0}(秒)";
-            chart2.Series[0].IsVisibleInLegend = false;
+            chart2.Series[0].IsVisibleInLegend = true;
+
+            chart2.Series[1].ChartType = SeriesChartType.Column;
+            chart2.Series[1].IsValueShownAsLabel = true;
+            chart2.Series[1].LabelForeColor = Color.White;//圆柱上方文字颜色
+            chart2.Series[1].Font = new Font("黑体", 10, FontStyle.Bold);//圆柱上方文字字体
+            chart2.Series[1]["ColumnLabelStyle"] = "center";
+            chart2.Series[1].LegendText = "标准时间(秒)";
+            chart2.Series[1].LabelFormat = "{0}(秒)";
+            chart2.Series[1].IsVisibleInLegend = true;
 
             chart2.Palette = ChartColorPalette.None;
-            chart2.PaletteCustomColors = new Color[] { Color.DarkOrange };
+            chart2.PaletteCustomColors = new Color[] {Color.Gold, Color.Lime };
         }
 
         private void timFlush_Tick(object sender, EventArgs e)
@@ -112,10 +121,12 @@ namespace HeiFeiMidea
 
 
             chart1.Series[0].Points.DataBindXY(frmMain.mMain.AllPCs.AllStatueTick.SlowName,
-                frmMain.mMain.AllPCs.AllStatueTick.SlowAverageTime);        
+                frmMain.mMain.AllPCs.AllStatueTick.SlowAverageTime);
 
-            chart2.Series[0].Points.DataBindXY(frmMain.mMain.AllPCs.AllStatueTick.StationName, 
+            chart2.Series[0].Points.DataBindXY(frmMain.mMain.AllPCs.AllStatueTick.StationName,
                 frmMain.mMain.AllPCs.AllStatueTick.AverageTime);
+            chart2.Series[1].Points.DataBindXY(frmMain.mMain.AllPCs.AllStatueTick.StationName,
+                frmMain.mMain.AllPCs.AllStatueTick.SetTime);
 
             if (frmMain.mMain.AllPCs.AllStatueTick.SlowName.Count > 0)
                 itemSlow1.Value = frmMain.mMain.AllPCs.AllStatueTick.SlowName[0];

@@ -423,5 +423,11 @@ namespace HeiFeiMidea
                 timAutoPlay.Stop();
             }
         }
+
+        private void btnLine_Click(object sender, EventArgs e)
+        {
+            frmReportLine fra = new frmReportLine();
+            fra.ShowDialog();
+        }
     }
 }

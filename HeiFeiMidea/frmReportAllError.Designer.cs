@@ -37,17 +37,21 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.rptSheBei2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.rptWuLiao1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.rptWuLiao2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.rptChaoShi1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.rptChaoShi2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.panTtile = new System.Windows.Forms.Panel();
             this.btnSearch = new All.Control.Metro.PicButton();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.rptChaoShi1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.rptChaoShi2 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.rptWuLiao1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.rptWuLiao2 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.rptCaoZuo1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.rptCaoZuo2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.panSize.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -57,6 +61,8 @@
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.panTtile.SuspendLayout();
+            this.tabPage7.SuspendLayout();
+            this.tabPage8.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
@@ -88,6 +94,8 @@
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage6);
+            this.tabControl1.Controls.Add(this.tabPage7);
+            this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tabControl1.Location = new System.Drawing.Point(0, 37);
@@ -120,10 +128,10 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.rptSheBei2);
-            this.tabPage2.Location = new System.Drawing.Point(40, 4);
+            this.tabPage2.Location = new System.Drawing.Point(48, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(661, 316);
+            this.tabPage2.Size = new System.Drawing.Size(653, 316);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "设备记录";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -134,7 +142,7 @@
             this.rptSheBei2.LocalReport.ReportEmbeddedResource = "HeiFeiMidea.Report.rptErrorSheBeiDetial.rdlc";
             this.rptSheBei2.Location = new System.Drawing.Point(3, 3);
             this.rptSheBei2.Name = "rptSheBei2";
-            this.rptSheBei2.Size = new System.Drawing.Size(655, 310);
+            this.rptSheBei2.Size = new System.Drawing.Size(647, 310);
             this.rptSheBei2.TabIndex = 3;
             // 
             // tabPage3
@@ -148,6 +156,15 @@
             this.tabPage3.Text = "物料报表";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // rptWuLiao1
+            // 
+            this.rptWuLiao1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rptWuLiao1.LocalReport.ReportEmbeddedResource = "HeiFeiMidea.Report.rptErrorWuLiao.rdlc";
+            this.rptWuLiao1.Location = new System.Drawing.Point(3, 3);
+            this.rptWuLiao1.Name = "rptWuLiao1";
+            this.rptWuLiao1.Size = new System.Drawing.Size(647, 310);
+            this.rptWuLiao1.TabIndex = 4;
+            // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.rptWuLiao2);
@@ -158,6 +175,15 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "物料记录";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // rptWuLiao2
+            // 
+            this.rptWuLiao2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rptWuLiao2.LocalReport.ReportEmbeddedResource = "HeiFeiMidea.Report.rptErrorWuLiaoDetial.rdlc";
+            this.rptWuLiao2.Location = new System.Drawing.Point(3, 3);
+            this.rptWuLiao2.Name = "rptWuLiao2";
+            this.rptWuLiao2.Size = new System.Drawing.Size(647, 310);
+            this.rptWuLiao2.TabIndex = 4;
             // 
             // tabPage5
             // 
@@ -170,6 +196,15 @@
             this.tabPage5.Text = "超时报表";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // rptChaoShi1
+            // 
+            this.rptChaoShi1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rptChaoShi1.LocalReport.ReportEmbeddedResource = "HeiFeiMidea.Report.rptErrorChaoShi.rdlc";
+            this.rptChaoShi1.Location = new System.Drawing.Point(3, 3);
+            this.rptChaoShi1.Name = "rptChaoShi1";
+            this.rptChaoShi1.Size = new System.Drawing.Size(647, 310);
+            this.rptChaoShi1.TabIndex = 4;
+            // 
             // tabPage6
             // 
             this.tabPage6.Controls.Add(this.rptChaoShi2);
@@ -180,6 +215,15 @@
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "超时记录";
             this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // rptChaoShi2
+            // 
+            this.rptChaoShi2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rptChaoShi2.LocalReport.ReportEmbeddedResource = "HeiFeiMidea.Report.rptErrorChaoShiDetial.rdlc";
+            this.rptChaoShi2.Location = new System.Drawing.Point(3, 3);
+            this.rptChaoShi2.Name = "rptChaoShi2";
+            this.rptChaoShi2.Size = new System.Drawing.Size(647, 310);
+            this.rptChaoShi2.TabIndex = 4;
             // 
             // panTtile
             // 
@@ -232,41 +276,45 @@
             this.dateTimePicker2.Size = new System.Drawing.Size(261, 29);
             this.dateTimePicker2.TabIndex = 20;
             // 
-            // rptChaoShi1
+            // tabPage7
             // 
-            this.rptChaoShi1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rptChaoShi1.LocalReport.ReportEmbeddedResource = "HeiFeiMidea.Report.rptErrorChaoShi.rdlc";
-            this.rptChaoShi1.Location = new System.Drawing.Point(3, 3);
-            this.rptChaoShi1.Name = "rptChaoShi1";
-            this.rptChaoShi1.Size = new System.Drawing.Size(647, 310);
-            this.rptChaoShi1.TabIndex = 4;
+            this.tabPage7.Controls.Add(this.rptCaoZuo1);
+            this.tabPage7.Location = new System.Drawing.Point(48, 4);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(653, 316);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "操作用时";
+            this.tabPage7.UseVisualStyleBackColor = true;
             // 
-            // rptChaoShi2
+            // tabPage8
             // 
-            this.rptChaoShi2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rptChaoShi2.LocalReport.ReportEmbeddedResource = "HeiFeiMidea.Report.rptErrorChaoShiDetial.rdlc";
-            this.rptChaoShi2.Location = new System.Drawing.Point(3, 3);
-            this.rptChaoShi2.Name = "rptChaoShi2";
-            this.rptChaoShi2.Size = new System.Drawing.Size(647, 310);
-            this.rptChaoShi2.TabIndex = 4;
+            this.tabPage8.Controls.Add(this.rptCaoZuo2);
+            this.tabPage8.Location = new System.Drawing.Point(48, 4);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage8.Size = new System.Drawing.Size(653, 316);
+            this.tabPage8.TabIndex = 7;
+            this.tabPage8.Text = "操作记录";
+            this.tabPage8.UseVisualStyleBackColor = true;
             // 
-            // rptWuLiao1
+            // rptCaoZuo1
             // 
-            this.rptWuLiao1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rptWuLiao1.LocalReport.ReportEmbeddedResource = "HeiFeiMidea.Report.rptErrorWuLiao.rdlc";
-            this.rptWuLiao1.Location = new System.Drawing.Point(3, 3);
-            this.rptWuLiao1.Name = "rptWuLiao1";
-            this.rptWuLiao1.Size = new System.Drawing.Size(647, 310);
-            this.rptWuLiao1.TabIndex = 4;
+            this.rptCaoZuo1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rptCaoZuo1.LocalReport.ReportEmbeddedResource = "HeiFeiMidea.Report.rptStationTime.rdlc";
+            this.rptCaoZuo1.Location = new System.Drawing.Point(3, 3);
+            this.rptCaoZuo1.Name = "rptCaoZuo1";
+            this.rptCaoZuo1.Size = new System.Drawing.Size(647, 310);
+            this.rptCaoZuo1.TabIndex = 5;
             // 
-            // rptWuLiao2
+            // rptCaoZuo2
             // 
-            this.rptWuLiao2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rptWuLiao2.LocalReport.ReportEmbeddedResource = "HeiFeiMidea.Report.rptErrorWuLiaoDetial.rdlc";
-            this.rptWuLiao2.Location = new System.Drawing.Point(3, 3);
-            this.rptWuLiao2.Name = "rptWuLiao2";
-            this.rptWuLiao2.Size = new System.Drawing.Size(647, 310);
-            this.rptWuLiao2.TabIndex = 4;
+            this.rptCaoZuo2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rptCaoZuo2.LocalReport.ReportEmbeddedResource = "HeiFeiMidea.Report.rptStationTimeDetial.rdlc";
+            this.rptCaoZuo2.Location = new System.Drawing.Point(3, 3);
+            this.rptCaoZuo2.Name = "rptCaoZuo2";
+            this.rptCaoZuo2.Size = new System.Drawing.Size(647, 310);
+            this.rptCaoZuo2.TabIndex = 5;
             // 
             // frmReportAllError
             // 
@@ -289,6 +337,8 @@
             this.tabPage5.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.panTtile.ResumeLayout(false);
+            this.tabPage7.ResumeLayout(false);
+            this.tabPage8.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -315,5 +365,9 @@
         private Microsoft.Reporting.WinForms.ReportViewer rptChaoShi2;
         private Microsoft.Reporting.WinForms.ReportViewer rptWuLiao1;
         private Microsoft.Reporting.WinForms.ReportViewer rptWuLiao2;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.TabPage tabPage8;
+        private Microsoft.Reporting.WinForms.ReportViewer rptCaoZuo1;
+        private Microsoft.Reporting.WinForms.ReportViewer rptCaoZuo2;
     }
 }

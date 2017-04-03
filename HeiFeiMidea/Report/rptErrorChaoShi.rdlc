@@ -85,6 +85,7 @@
                     <FontSize>8pt</FontSize>
                   </Style>
                 </ChartAxisTitle>
+                <Interval>1</Interval>
                 <VariableAutoInterval>true</VariableAutoInterval>
                 <ChartMajorGridLines>
                   <Enabled>False</Enabled>

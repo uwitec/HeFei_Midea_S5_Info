@@ -36,8 +36,11 @@ namespace HeiFeiMidea
                     if (!oldConnect)
                     {
                         frmMain.mMain.FlushAllError.Change(FlushAllError.SpaceList.注油机, FlushAllError.ChangeList.Del);
-                        frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("{0}  通讯故障", "注油机"), FlushAllError.ChangeList.Del));
-                        oldConnect = true;
+
+                        if (frmMain.mMain.AllDataXml.ErrorShow.Show(FlushAllError.SpaceList.注油机))
+                        {
+                            frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("{0}  通讯故障", "注油机"), FlushAllError.ChangeList.Del));
+                        } oldConnect = true;
                     }
                     errorCount = 0;
                     lastStatueTime = LastStatueTime;
@@ -53,8 +56,12 @@ namespace HeiFeiMidea
                         if (oldConnect)
                         {
                             frmMain.mMain.FlushAllError.Change(FlushAllError.SpaceList.注油机, FlushAllError.ChangeList.Add);
-                            frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("{0}  通讯故障", "注油机"), FlushAllError.ChangeList.Add));
-                            oldConnect = false;      
+
+                            if (frmMain.mMain.AllDataXml.ErrorShow.Show(FlushAllError.SpaceList.注油机))
+                            {
+                                frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("{0}  通讯故障", "注油机"), FlushAllError.ChangeList.Add));
+                            } 
+                            oldConnect = false;
                         }
                         return Color.Purple;
                     }
@@ -87,8 +94,10 @@ namespace HeiFeiMidea
                 {
                     if (!oldGuanJi)
                     {
-                        frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("{0}  已关机", "注油机"), FlushAllError.ChangeList.Add));
-
+                        if (frmMain.mMain.AllDataXml.ErrorShow.Show(FlushAllError.SpaceList.注油机))
+                        {
+                            frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("{0}  已关机", "注油机"), FlushAllError.ChangeList.Add));
+                        }
                         oldGuanJi = true;
                     }
                 }
@@ -105,7 +114,11 @@ namespace HeiFeiMidea
                     if (!oldGuZhang)
                     {
                         frmMain.mMain.FlushAllError.Change(FlushAllError.SpaceList.注油机, FlushAllError.ChangeList.Add);
-                        frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("{0}  出现故障", "注油机"), FlushAllError.ChangeList.Add));
+
+                        if (frmMain.mMain.AllDataXml.ErrorShow.Show(FlushAllError.SpaceList.注油机))
+                        {
+                            frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("{0}  出现故障", "注油机"), FlushAllError.ChangeList.Add));
+                        }
                         oldGuZhang = true;
                     }
                 }

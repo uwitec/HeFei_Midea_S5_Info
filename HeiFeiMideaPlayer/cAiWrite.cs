@@ -9,7 +9,7 @@ namespace HeiFeiMideaPlayer
 {
     public class cAiWrite
     {
-        Illustrator.Application App;
+        public Illustrator.Application App;
         string fileDirectory = "";
         public delegate void PrintOverOKHandle(string mBarCode,string bBarCode,string mMode);
         public event PrintOverOKHandle PrintOverShangXianOK;
@@ -76,13 +76,26 @@ namespace HeiFeiMideaPlayer
             }
         }
         /// <summary>
+        /// 手动打印的时候,手动调用打开程序
+        /// </summary>
+        public void OpenApp()
+        {
+            if (App == null)
+            {
+                App = new Illustrator.Application();
+            }
+        }
+        /// <summary>
         /// 打印文件
         /// </summary>
         /// <param name="FileName">原始文件名</param>
         /// <param name="BarCode">美的条码</param>
         /// <param name="JiXing">美的机型</param>
         /// <param name="DingDan">订单名称</param>
-        private bool PrintFile(string FileName, string BarCode, string JiXing, string DingDan, string boshiBarCode, string boshiMode, DateTime barTime)
+        /// <param name="barTime">条码时间</param>
+        /// <param name="boshiBarCode">博世条码</param>
+        /// <param name="boshiMode">博世机型</param>
+        public bool PrintFile(string FileName, string BarCode, string JiXing, string DingDan, string boshiBarCode, string boshiMode, DateTime barTime,string boshiOrder,string waiXiaoBarCode)
         {
             bool result = false;
             if (App == null)
@@ -99,6 +112,11 @@ namespace HeiFeiMideaPlayer
             {
                 frmMain.mMain.AddInfo("AI文件替换方案不存在，不能找到须要替换的内容");
                 return result;
+            }
+            if ((frmMain.mMain.AiReplace.RReplace == null || frmMain.mMain.AiReplace.RReplace.Count <= 0) &&
+               (frmMain.mMain.AiReplace.TReplace == null || frmMain.mMain.AiReplace.TReplace.Count <= 0))
+            {
+                frmMain.mMain.AiReplace.Load();
             }
             if ((frmMain.mMain.AiReplace.RReplace == null || frmMain.mMain.AiReplace.RReplace.Count <= 0) &&
                (frmMain.mMain.AiReplace.TReplace == null || frmMain.mMain.AiReplace.TReplace.Count <= 0))
@@ -151,9 +169,21 @@ namespace HeiFeiMideaPlayer
                     bw.Options = eo;
                     bw.Write(boshiBarCode).Save(string.Format("{0}\\{1}.png", fileDirectory, boshiBarCode));
                 }
-
+                //生成美的出口条码
+                if (!System.IO.File.Exists(string.Format("{0}\\{1}.png", fileDirectory, waiXiaoBarCode)) && waiXiaoBarCode.Length > 0)
+                {
+                    bw = new ZXing.BarcodeWriter();
+                    bw.Format = ZXing.BarcodeFormat.CODE_128;
+                    eo = new ZXing.Common.EncodingOptions();
+                    eo.PureBarcode = true;
+                    eo.Width = 45;
+                    eo.Height = 20;
+                    eo.Margin = 0;
+                    bw.Options = eo;
+                    bw.Write(waiXiaoBarCode).Save(string.Format("{0}\\{1}.png", fileDirectory, waiXiaoBarCode));
+                }
                 //打开AI进行替换文件
-                Illustrator.Document doc = App.Open(FileName, Illustrator.AiDocumentColorSpace.aiDocumentRGBColor);
+                Illustrator.Document doc = App.Open(FileName, Illustrator.AiDocumentColorSpace.aiDocumentRGBColor,null);
                 if (doc == null)
                 {
                     frmMain.mMain.AddInfo(string.Format("打开指定AI文件{0}失败，无法打印标贴", FileName));
@@ -227,6 +257,12 @@ namespace HeiFeiMideaPlayer
                                         placeitem.File = string.Format("{0}\\DEMO{1}.png", fileDirectory, boshiBarCode);
                                     }
                                     break;
+                                case cAiReplace.RegionReplace.RegionList.出口条码:
+                                    if (System.IO.File.Exists(string.Format("{0}\\{1}.png", fileDirectory, waiXiaoBarCode)))
+                                    {
+                                        placeitem.File = string.Format("{0}\\{1}.png", fileDirectory, waiXiaoBarCode);
+                                    }
+                                    break;
                             }
                             placeitem.Left = allReplace[i].Left;
                             placeitem.Top = allReplace[i].Top;
@@ -287,6 +323,12 @@ namespace HeiFeiMideaPlayer
                                     case cAiReplace.TextReplace.TextList.条码_美的条码:
                                         tf.Contents = BarCode;
                                         break;
+                                    case cAiReplace.TextReplace.TextList.订单_出口订单名称:
+                                        tf.Contents = boshiOrder;
+                                        break;
+                                    case cAiReplace.TextReplace.TextList.条码_美的出口条码:
+                                        tf.Contents = waiXiaoBarCode;
+                                        break;
                                 }
                                 break;
                             }
@@ -327,7 +369,7 @@ namespace HeiFeiMideaPlayer
         /// <param name="mBarCode"></param>
         private void RunPrint(string mBarCode, HeiFeiMideaDll.cMain.AllComputerList computer)
         {
-
+            All.Class.Error.Add("RunPrint");
             switch (computer)
             {
                 case HeiFeiMideaDll.cMain.AllComputerList.上线:
@@ -341,7 +383,7 @@ namespace HeiFeiMideaPlayer
                     RunPrintYinXiang(mBarCode);
                     break;
                 case HeiFeiMideaDll.cMain.AllComputerList.折弯机:
-                    if(mBarCode.Length>12)
+                    if (mBarCode.Length > 12)
                     {
                         RunPrintZheWang(mBarCode, mBarCode.Substring(0, mBarCode.Length - 12));
                     }
@@ -371,10 +413,11 @@ namespace HeiFeiMideaPlayer
                 frmMain.mMain.AddInfo("下载AI文件失败，无法打印标贴");
                 return;
             }
-            frmMain.mMain.AiWrite.PrintFile(curFile, mBarCode, mMode, "", "", "", DateTime.Now);
+            frmMain.mMain.AiWrite.PrintFile(curFile, mBarCode, mMode, "", "", "", DateTime.Now, "", "");
         }
         private void RunPrintInLine(string mBarCode)
         {
+            All.Class.Error.Add("RunPrintInLine");
             string orderName = "";
             string mModeName = "";
             string bModeName = "";
@@ -388,8 +431,18 @@ namespace HeiFeiMideaPlayer
                 frmMain.mMain.AddInfo("当前条码长度不正确，不能进行打印");
                 return;
             }
-            string tmpSetBarCode=mBarCode.Substring(0, 18).PadRight(22, '*');
-            int tmpBarCodeIndex=All.Class.Num.ToInt(mBarCode.Substring(18,4));
+            switch (All.Class.MideaBarCode.GetMachine(mBarCode))
+            {
+                case All.Class.MideaBarCode.MachineLists.内销:
+                    printFile = "InLine.AI";
+                    break;
+                case All.Class.MideaBarCode.MachineLists.外销:
+                    printFile = "InLine2.AI";
+                    break;
+            }
+            All.Class.Error.Add("RunPrintInLine_BeginGetCode");
+            string tmpSetBarCode = All.Class.MideaBarCode.GetPadFromBar(mBarCode);
+            int tmpBarCodeIndex = All.Class.MideaBarCode.GetIndexFromBar(mBarCode);
             using (DataTable dt = frmMain.mMain.AllDataBase.FlushData.Read(string.Format("select * from SetOrder where BarCode='{0}' and BarStart<={1} and BarEnd>={1}", tmpSetBarCode, tmpBarCodeIndex)))
             {
                 if (dt == null || dt.Rows.Count <= 0)
@@ -404,7 +457,7 @@ namespace HeiFeiMideaPlayer
                     return;
                 }
             }
-            using (DataTable dt = frmMain.mMain.AllDataBase.FlushData.Read(string.Format("select * from SetMode where ModeID='{0}'", mBarCode.Substring(6, 5))))
+            using (DataTable dt = frmMain.mMain.AllDataBase.FlushData.Read(string.Format("select * from SetMode where ModeID='{0}'",All.Class.MideaBarCode.GetModeFromBar( mBarCode))))
             {
                 if (dt == null || dt.Rows.Count <= 0)
                 {
@@ -413,6 +466,7 @@ namespace HeiFeiMideaPlayer
                 }
                 mModeName = All.Class.Num.ToString(dt.Rows[0]["Mode"]);
             }
+            All.Class.Error.Add("RunPrintInLine_BeginDownLoad");
             string curFile = string.Format("{0}\\AI\\{1}", cMain.MediaFile, printFile);
             if (!System.IO.File.Exists(curFile))
             {
@@ -429,30 +483,36 @@ namespace HeiFeiMideaPlayer
                     DownLoad(printFile, "AI");
                 }
             }
+            All.Class.Error.Add("RunPrintInLine_DownLoadOver");
             if (!System.IO.File.Exists(curFile))
             {
                 frmMain.mMain.AddInfo("下载AI文件失败，无法打印标贴");
                 return;
             }
+            All.Class.Error.Add("RunPrintInLine_Midea2BoShi_Start");
             frmMain.mMain.AllDataXml.Midea2BoShi.Midea2BoShi(mBarCode, HeiFeiMideaDll.cMain.AllComputerList.上线, out printTime, out bBarCode, out bModeName, out bID, out FindFromOld);
             if (bBarCode == "")
             {
                 return;
             }
+            All.Class.Error.Add("RunPrintInLine_Midea2BoShi_End");
             if (bBarCode.Length != 26)
             {
                 frmMain.mMain.AddInfo("转换后，博世条码不正确，请检查程序");
                 return;
             }
-            if (frmMain.mMain.AiWrite.PrintFile(curFile, mBarCode, mModeName, orderName, bBarCode, bModeName, printTime))
+            All.Class.Error.Add("RunPrintInLine_BeginPrint");
+            if (frmMain.mMain.AiWrite.PrintFile(curFile, mBarCode, mModeName, orderName, bBarCode, bModeName, printTime, All.Class.BoShi.WaiXiaoOrderChange(orderName),
+                All.Class.MideaBarCode.WaiXiaoBarChange(mBarCode, orderName)))
             {
+                All.Class.Error.Add("RunPrintInLine_PrintOk");
                 if (!FindFromOld)//不是找到的已存在的，则添加序号，如果是找到的之前存在的，则不用添加
                 {
                     frmMain.mMain.AllDataXml.LocalBoShis.Add(printTime, bID);
                 }
                 if (PrintOverShangXianOK != null)
                 {
-                    PrintOverShangXianOK(mBarCode, bBarCode,mModeName);
+                    PrintOverShangXianOK(mBarCode, bBarCode, mModeName);
                 }
             }
         }
@@ -475,8 +535,8 @@ namespace HeiFeiMideaPlayer
                 frmMain.mMain.AddInfo("当前条码长度不正确，不能进行打印");
                 return;
             }
-            string tmpSetBarCode = mBarCode.Substring(0, 18).PadRight(22, '*');
-            int tmpBarCodeIndex = All.Class.Num.ToInt(mBarCode.Substring(18, 4));
+            string tmpSetBarCode = All.Class.MideaBarCode.GetPadFromBar(mBarCode);
+            int tmpBarCodeIndex = All.Class.MideaBarCode.GetIndexFromBar(mBarCode);
             using (DataTable dt = frmMain.mMain.AllDataBase.FlushData.Read(string.Format("select * from SetOrder where BarCode='{0}' and BarStart<={1} and BarEnd>={1}", tmpSetBarCode, tmpBarCodeIndex)))
             {
                 if (dt == null || dt.Rows.Count <= 0)
@@ -497,7 +557,7 @@ namespace HeiFeiMideaPlayer
                     return;
                 }
             }
-            using (DataTable dt = frmMain.mMain.AllDataBase.FlushData.Read(string.Format("select * from SetMode where ModeID='{0}'", mBarCode.Substring(6, 5))))
+            using (DataTable dt = frmMain.mMain.AllDataBase.FlushData.Read(string.Format("select * from SetMode where ModeID='{0}'", All.Class.MideaBarCode.GetModeFromBar(mBarCode))))
             {
                 if (dt == null || dt.Rows.Count <= 0)
                 {
@@ -537,7 +597,8 @@ namespace HeiFeiMideaPlayer
                 frmMain.mMain.AddInfo("转换后，博世条码不正确，请检查程序");
                 return;
             }
-            frmMain.mMain.AiWrite.PrintFile(curFile, mBarCode, mModeName, orderName, bBarCode, bModeName, printTime);
+            frmMain.mMain.AiWrite.PrintFile(curFile, mBarCode, mModeName, orderName, bBarCode, bModeName, printTime, All.Class.BoShi.WaiXiaoOrderChange(orderName),
+                All.Class.MideaBarCode.WaiXiaoBarChange(mBarCode, orderName));
                    
         }
         private void DownLoad(string file, string directory)

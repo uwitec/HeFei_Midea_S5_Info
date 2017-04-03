@@ -54,6 +54,7 @@ namespace HeiFeiMidea
         }
         private void InitData()
         {
+            txtTodayCount.Text = frmMain.mMain.AllDataXml.LocalSet.TodayCount.ToString();
             DataTable dt = new DataTable();
             dt.Columns.Add("Add", typeof(Image));
             dt.Columns.Add("OrderName", typeof(string));
@@ -189,6 +190,8 @@ namespace HeiFeiMidea
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
+            frmMain.mMain.AllDataXml.LocalSet.TodayCount = All.Class.Num.ToInt(txtTodayCount.Text);
+            frmMain.mMain.AllDataXml.LocalSet.Save();
             if (HeiFeiMideaDll.OrderSet.SaveOrder(GetData(),frmMain.mMain.AllDataBase.LocalData))
             {
                 All.Window.MetroMessageBox.Show(this, "所有订单数据已成功保存至数据库", "保存成功", MessageBoxButtons.OK, MessageBoxIcon.Information);

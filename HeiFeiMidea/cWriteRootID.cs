@@ -57,7 +57,7 @@ namespace HeiFeiMidea
         /// <summary>
         /// 所有数据写入位置
         /// </summary>
-        RootID[] AllRootID = new RootID[38];
+        RootID[] AllRootID = new RootID[39];
         object lockObject = new object();
         All.Meter.Simens1200Net plc;//主PLC
         All.Meter.NetModbusRtu plcLengNingQi;//冷凝器线PLC
@@ -90,6 +90,7 @@ namespace HeiFeiMidea
             {
                 for (int i = 0; i < AllRootID.Length; i++)
                 {
+                    #region//将写要入的数据写入到各单机设备
                     if (AllRootID[i].WriteNow)
                     {
                         lock (lockObject)
@@ -123,6 +124,7 @@ namespace HeiFeiMidea
                                         if (frmMain.mMain.AllMeterData.AllCommunite[31].Sons[0].WriteInternal<ushort>(1, 7))
                                         {
                                             AllRootID[i].WriteNow = false;
+                                            AllRootID[i].WriteReset = true;
                                         }
                                     }
                                     break;
@@ -132,6 +134,7 @@ namespace HeiFeiMidea
                                         if (frmMain.mMain.AllMeterData.AllCommunite[32].Sons[0].WriteInternal<ushort>(1, 4))
                                         {
                                             AllRootID[i].WriteNow = false;
+                                            AllRootID[i].WriteReset = true;
                                         }
                                     }
                                     break;
@@ -174,8 +177,42 @@ namespace HeiFeiMidea
                             }
                         }
                     }
+                    #endregion
+                    #region//我写完成后,还要延时把数据清除
+                    if (AllRootID[i].WriteReset)
+                    {
+                        lock (lockObject)
+                        {
+                            if (AllRootID[i].WriteResetTime <= 0)
+                            {
+                                AllRootID[i].WriteResetTime = Environment.TickCount;
+                            }
+                            else
+                            {
+                                if ((Environment.TickCount - AllRootID[i].WriteResetTime) >= 4000)
+                                {
+                                    switch (AllRootID[i].RootSpace)
+                                    {
+                                        case AllRootSpace.充氦回收:
+                                            if (frmMain.mMain.AllMeterData.AllCommunite[31].Sons[0].WriteInternal<ushort>(0, 7))
+                                            {
+                                                AllRootID[i].WriteReset = false;
+                                            }
+                                            break;
+                                        case AllRootSpace.抽空抽注:
+                                            if (frmMain.mMain.AllMeterData.AllCommunite[32].Sons[0].WriteInternal<ushort>(0, 4))
+                                            {
+                                                AllRootID[i].WriteReset = false;
+                                            }
+                                            break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    #endregion
                 }
-                Thread.Sleep(10);
+                Thread.Sleep(20);
             }
         }
         public void Write(AllRootSpace space, string barCode)
@@ -251,6 +288,8 @@ namespace HeiFeiMidea
                         }
                         AllRootID[i].BarCode = buff;
                         AllRootID[i].WriteNow = true;
+                        AllRootID[i].WriteReset = false;
+                        AllRootID[i].WriteResetTime = 0;
                     }
                 }
             }
@@ -312,6 +351,8 @@ namespace HeiFeiMidea
                         buff.Add(ID);
                         AllRootID[i].Value = buff;
                         AllRootID[i].WriteNow = true;
+                        AllRootID[i].WriteResetTime = 0;
+                        AllRootID[i].WriteReset = false;
                     }
                     break;
                 }
@@ -330,13 +371,35 @@ namespace HeiFeiMidea
                     rootSpace = value;
                 }
             }
+            /// <summary>
+            /// 是否马上写数据
+            /// </summary>
             public bool WriteNow
             { get; set; }
+            /// <summary>
+            /// 写参数
+            /// </summary>
             public Dictionary<string, string> Parm
             { get; set; }
+            /// <summary>
+            /// 写入值
+            /// </summary>
             public List<ushort> Value
             { get; set; }
+            /// <summary>
+            /// 写入条码
+            /// </summary>
             public List<string> BarCode
+            { get; set; }
+            /// <summary>
+            /// 是否要写回复位状态
+            /// </summary>
+            public bool WriteReset
+            { get; set; }
+            /// <summary>
+            /// 写入复位开始时间
+            /// </summary>
+            public int WriteResetTime
             { get; set; }
             public RootID()
             {
@@ -344,6 +407,8 @@ namespace HeiFeiMidea
                 this.Parm = new Dictionary<string, string>();
                 Value = new List<ushort>();
                 BarCode = new List<string>();
+                WriteReset = false;
+                WriteResetTime = 0;
             }
             private void Init(AllRootSpace value)
             {

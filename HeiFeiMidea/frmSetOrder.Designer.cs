@@ -31,12 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSetOrder));
             this.panSize = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnIn = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnClose = new All.Control.Metro.TitleButton();
-            this.openExcel = new System.Windows.Forms.OpenFileDialog();
-            this.openAi = new System.Windows.Forms.OpenFileDialog();
             this.colAdd = new System.Windows.Forms.DataGridViewImageColumn();
             this.colOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colBarCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +43,14 @@
             this.colBarLenNingEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPrintFile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMidea = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnIn = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnClose = new All.Control.Metro.TitleButton();
+            this.openExcel = new System.Windows.Forms.OpenFileDialog();
+            this.openAi = new System.Windows.Forms.OpenFileDialog();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtTodayCount = new System.Windows.Forms.TextBox();
             this.panSize.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -97,52 +99,6 @@
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnIn);
-            this.panel1.Controls.Add(this.btnSave);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 341);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(714, 40);
-            this.panel1.TabIndex = 64;
-            // 
-            // btnIn
-            // 
-            this.btnIn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnIn.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIn.Location = new System.Drawing.Point(499, 6);
-            this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(89, 29);
-            this.btnIn.TabIndex = 64;
-            this.btnIn.Text = "导入";
-            this.btnIn.UseVisualStyleBackColor = true;
-            this.btnIn.Visible = false;
-            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(613, 6);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(89, 29);
-            this.btnSave.TabIndex = 63;
-            this.btnSave.Text = "保存";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClose.BackgroundImage")));
-            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnClose.Location = new System.Drawing.Point(764, 85);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(35, 35);
-            this.btnClose.TabIndex = 64;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // colAdd
             // 
@@ -217,6 +173,74 @@
             this.colMidea.HeaderText = "产品类别";
             this.colMidea.Name = "colMidea";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.txtTodayCount);
+            this.panel1.Controls.Add(this.btnIn);
+            this.panel1.Controls.Add(this.btnSave);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 341);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(714, 40);
+            this.panel1.TabIndex = 64;
+            // 
+            // btnIn
+            // 
+            this.btnIn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnIn.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIn.Location = new System.Drawing.Point(499, 6);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(89, 29);
+            this.btnIn.TabIndex = 64;
+            this.btnIn.Text = "导入";
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Visible = false;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(613, 6);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(89, 29);
+            this.btnSave.TabIndex = 63;
+            this.btnSave.Text = "保存";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClose.BackgroundImage")));
+            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnClose.Location = new System.Drawing.Point(764, 85);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(35, 35);
+            this.btnClose.TabIndex = 64;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(25, 10);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(154, 21);
+            this.label7.TabIndex = 104;
+            this.label7.Text = "显示今日目标产量";
+            // 
+            // txtTodayCount
+            // 
+            this.txtTodayCount.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTodayCount.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txtTodayCount.Location = new System.Drawing.Point(185, 7);
+            this.txtTodayCount.Name = "txtTodayCount";
+            this.txtTodayCount.Size = new System.Drawing.Size(65, 29);
+            this.txtTodayCount.TabIndex = 105;
+            // 
             // frmSetOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -232,6 +256,7 @@
             this.panSize.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -259,5 +284,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colBarLenNingEnd;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPrintFile;
         private System.Windows.Forms.DataGridViewComboBoxColumn colMidea;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtTodayCount;
     }
 }

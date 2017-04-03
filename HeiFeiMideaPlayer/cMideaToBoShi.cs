@@ -76,8 +76,19 @@ namespace HeiFeiMideaPlayer
             AllMode.Add(midea, boShi);
             Save();
         }
+        /// <summary>
+        /// 将美的码转换为博世码
+        /// </summary>
+        /// <param name="mBarCode"></param>
+        /// <param name="computer"></param>
+        /// <param name="BarTime"></param>
+        /// <param name="bBarCode"></param>
+        /// <param name="bMode"></param>
+        /// <param name="bID"></param>
+        /// <param name="FindFromOld"></param>
         public void Midea2BoShi(string mBarCode, HeiFeiMideaDll.cMain.AllComputerList computer, out DateTime BarTime, out string bBarCode, out string bMode, out string bID,out bool FindFromOld)
         {
+            All.Class.Error.Add("RunPrintInLine_Midea2BoShi_Start");
             BarTime = DateTime.Now;
             bBarCode = "";
             bMode = "";
@@ -86,9 +97,11 @@ namespace HeiFeiMideaPlayer
             switch (computer)
             {
                 case HeiFeiMideaDll.cMain.AllComputerList.上线:
+                    All.Class.Error.Add("RunPrintInLine_Midea2BoShi_上线");
                     Midea2BoShiInLine(mBarCode, out BarTime, out bBarCode, out bMode, out bID, out FindFromOld);
                     break;
                 case HeiFeiMideaDll.cMain.AllComputerList.影像检:
+                    All.Class.Error.Add("RunPrintInLine_Midea2BoShi_影像检");
                     Midea2BoShiYinXiang(mBarCode, out BarTime, out bBarCode, out bMode, out bID);
                     break;
                 default:
@@ -115,7 +128,7 @@ namespace HeiFeiMideaPlayer
                 frmMain.mMain.AddInfo(string.Format("当前输入的条码：{0}不是正确的22位码，不能转换成博世条码", mBarCode));
                 return;
             }
-            string mideaMode = tmpBarCode.Substring(6, 5);//取美的机型
+            string mideaMode = All.Class.MideaBarCode.GetModeFromBar(mBarCode);//取美的机型
             if (AllMode.ContainsKey(mideaMode))//美的机型转博世机型
             {
                 bMode = AllMode[mideaMode].Mode;
@@ -159,18 +172,23 @@ namespace HeiFeiMideaPlayer
         /// <returns></returns>
         private void Midea2BoShiInLine(string mBarCode, out DateTime BarTime, out string bBarCode, out string bMode, out string bID, out bool FindFromOld)
         {
+            All.Class.Error.Add("RunPrintInLine_Midea2BoShiInLine");
             FindFromOld = false;
             bBarCode = "";
             bMode = "";
             bID = "";
             string tmpBarCode = mBarCode.Trim();
+            All.Class.Error.Add("RunPrintInLine_Midea2BoShiInLine_GetTime");
             BarTime = All.Class.MideaBarCode.GetTimeFromBar(tmpBarCode);
             if (tmpBarCode.Length != 22)
             {
                 frmMain.mMain.AddInfo(string.Format("当前输入的条码：{0}不是正确的22位码，不能转换成博世条码", mBarCode));
                 return;
             }
-            string mideaMode = tmpBarCode.Substring(6, 5);//取美的机型
+            All.Class.Error.Add("RunPrintInLine_Midea2BoShiInLine_GetMode");
+            string mideaMode = All.Class.MideaBarCode.GetModeFromBar(mBarCode);//取美的机型
+            All.Class.Error.Add("RunPrintInLine_Midea2BoShiInLine_EndMode");
+            All.Class.Error.Add(mBarCode);
             if (AllMode.ContainsKey(mideaMode))//美的机型转博世机型
             {
                 bMode = AllMode[mideaMode].Mode;
@@ -178,6 +196,7 @@ namespace HeiFeiMideaPlayer
             }
             else//从服务器取机型转换关系
             {
+                All.Class.Error.Add("RunPrintInLine_Midea2BoShiInLine_GetMidea2BoShi");
                 using (DataTable dt = frmMain.mMain.AllDataBase.FlushData.Read(string.Format("select BoShi,BoShiJiXing From SetMideaToBoShi where Midea='{0}'", mideaMode)))
                 {
                     if (dt == null || dt.Rows.Count <= 0)
@@ -191,6 +210,7 @@ namespace HeiFeiMideaPlayer
                         bID, bMode));
                 }
             }
+            All.Class.Error.Add("RunPrintInLine_Midea2BoShiInLine_GetExits");
             using (DataTable dt = frmMain.mMain.AllDataBase.DataBarCode.Read(string.Format("select Midea,Boss,Mode,OrderName from AllBarCode where Midea='{0}'", mBarCode)))
             {
                 if (dt != null && dt.Rows.Count > 0)
@@ -200,9 +220,13 @@ namespace HeiFeiMideaPlayer
                 }
                 else
                 {
-                    bBarCode = string.Format("399A-{0}-{1:D6}-{2}", All.Class.BoShi.GetBoShiTime(BarTime),  frmMain.mMain.AllDataXml.LocalBoShis.GetIndex(BarTime, bID), bID);
+                    All.Class.Error.Add("RunPrintInLine_Midea2BoShiInLine_GetNewIndex");
+                    All.Class.Error.Add(string.Format("{0:yyyy-MM-dd HH:mm:ss}", BarTime));
+                    All.Class.Error.Add(bID);
+                    bBarCode = string.Format("399A-{0}-{1:D6}-{2}", All.Class.BoShi.GetBoShiTime(BarTime), frmMain.mMain.AllDataXml.LocalBoShis.GetIndex(BarTime, bID), bID);
                 }
             }
+            All.Class.Error.Add("RunPrintInLine_Midea2BoShiInLine_End");
         }
     }
 }

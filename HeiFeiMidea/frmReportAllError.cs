@@ -36,6 +36,8 @@ namespace HeiFeiMidea
             rptChaoShi2.LocalReport.DataSources.Clear();
             rptWuLiao1.LocalReport.DataSources.Clear();
             rptWuLiao2.LocalReport.DataSources.Clear();
+            rptCaoZuo1.LocalReport.DataSources.Clear();
+            rptCaoZuo2.LocalReport.DataSources.Clear();
             string sql = "";// = string.Format("select ErrorText,StartTime,EndTime,ErrorTime,ErrorEnum From StatueErrorAll where ErrorTime>60 and StartTime>='{0:yyyy-MM-dd} 00:00:00' and StartTime<='{1:yyyy-MM-dd} 23:59:59'", dateTimePicker2.Value, dateTimePicker1.Value);
             DataTable dt;// = frmMain.mMain.AllDataBase.ReportData.Read(sql);
 
@@ -58,7 +60,12 @@ namespace HeiFeiMidea
             rptWuLiao1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("dtAllError", dt));
             rptWuLiao2.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("dtAllError", dt));
 
-
+            sql = string.Format("select TestTime,StationName,TimeCount,OperaCount from AllTestStationTime where testTime>='{0:yyyy-MM-dd} 00:00:00' and testTime<='{1:yyyy-MM-dd} 23:59:59' order by ID", dateTimePicker2.Value, dateTimePicker1.Value);
+            dt = frmMain.mMain.AllDataBase.ReportData.Read(sql);
+            rptCaoZuo2.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("dtStationDetial", dt));
+            sql = string.Format("select alltime / allCount AS TimePerEveryOne, StationName from (select sum(TimeCount) AS alltime, SUM(OperaCount) AS allCount, StationName from AllTestStationTime where testTime>='{0:yyyy-MM-dd} 00:00:00' and testTime<='{1:yyyy-MM-dd} 23:59:59' group by StationName) as dtStationTime", dateTimePicker2.Value, dateTimePicker1.Value);
+            dt = frmMain.mMain.AllDataBase.ReportData.Read(sql);
+            rptCaoZuo1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("dtStationTime", dt));
 
             rptSheBei1.RefreshReport();
             rptSheBei2.RefreshReport();
@@ -66,7 +73,8 @@ namespace HeiFeiMidea
             rptChaoShi2.RefreshReport();
             rptWuLiao1.RefreshReport();
             rptWuLiao2.RefreshReport();
-
+            rptCaoZuo1.RefreshReport();
+            rptCaoZuo2.RefreshReport();
         }
     }
 }

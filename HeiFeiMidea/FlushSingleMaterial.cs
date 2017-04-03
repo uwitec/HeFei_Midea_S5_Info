@@ -23,7 +23,10 @@ namespace HeiFeiMidea
             {
                 if (connect != value)
                 {
-                    frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info("物料网络连接失败", value ? FlushAllError.ChangeList.Del : FlushAllError.ChangeList.Add));
+                    if (frmMain.mMain.AllDataXml.ErrorShow.Show(FlushAllError.SpaceList.物料网络))
+                    {
+                        frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info("物料网络连接失败", value ? FlushAllError.ChangeList.Del : FlushAllError.ChangeList.Add));
+                    }
                     frmMain.mMain.FlushAllError.Change(FlushAllError.SpaceList.物料网络, value ? FlushAllError.ChangeList.Del : FlushAllError.ChangeList.Add);
                 }
                 connect = value;
@@ -41,7 +44,8 @@ namespace HeiFeiMidea
             else
             {
                 Connect = false;
-                frmMain.mMain.AllDataBase.MaterialData = All.Class.DataReadAndWrite.GetData(dataFile, "MaterialData");
+                frmMain.mMain.AllDataBase.MaterialData = new All.Class.PostGreSQL();
+                frmMain.mMain.AllDataBase.MaterialData.Login("192.168.1.201", "LEDSHOW", "odoo", "odoo");
             }
             ConnectOkFlushData(true, false);
         }
@@ -140,6 +144,10 @@ namespace HeiFeiMidea
                     }
                     if (Remote)
                     {
+                        if (All.Class.Num.ToBool(dt.Rows[0]["CallOver"]))
+                        {
+                            opera = Material.OperaList.Del;
+                        }
                         Material tmp = new Material(stationName, text, opera);
                         tmp.Save();
                         frmMain.mMain.AllDataXml.LocalSingleFlush.MaterialIndex = All.Class.Num.ToInt(dt.Rows[0]["ID"]);

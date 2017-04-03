@@ -140,16 +140,25 @@ namespace HeiFeiMidea
                         switch (frmMain.mMain.AllCars.AllStatueOther[i].WorkStation)
                         {
                             case 3:
-                                frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("{0}#机器人故障", frmMain.mMain.AllCars.AllStatueOther[i].WorkStation), All.Class.Num.ToBool(dt.Rows[i]["Error"]) ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del));
+                                if (frmMain.mMain.AllDataXml.ErrorShow.Show(FlushAllError.SpaceList.机器人))
+                                {
+                                    frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("{0}#机器人故障", frmMain.mMain.AllCars.AllStatueOther[i].WorkStation), All.Class.Num.ToBool(dt.Rows[i]["Error"]) ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del));
+                                }
                                 frmMain.mMain.FlushAllError.Change(FlushAllError.SpaceList.机器人, frmMain.mMain.AllCars.AllStatueOther[i].WorkStation,
                                     All.Class.Num.ToBool(dt.Rows[i]["Error"]) ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del);
                                 break;
                             case 9://绕膜机
-                                frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info("绕膜机出现故障", All.Class.Num.ToBool(dt.Rows[i]["Error"]) ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del));
+                                if (frmMain.mMain.AllDataXml.ErrorShow.Show(FlushAllError.SpaceList.绕膜机))
+                                {
+                                    frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info("绕膜机出现故障", All.Class.Num.ToBool(dt.Rows[i]["Error"]) ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del));
+                                }
                                 frmMain.mMain.FlushAllError.Change(FlushAllError.SpaceList.绕膜机, All.Class.Num.ToBool(dt.Rows[i]["Error"]) ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del);
                                 break;
                             case 10://打包机
-                                frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info("打包机出现故障", All.Class.Num.ToBool(dt.Rows[i]["Error"]) ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del));
+                                if (frmMain.mMain.AllDataXml.ErrorShow.Show(FlushAllError.SpaceList.打包机))
+                                {
+                                    frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info("打包机出现故障", All.Class.Num.ToBool(dt.Rows[i]["Error"]) ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del));
+                                }
                                 frmMain.mMain.FlushAllError.Change(FlushAllError.SpaceList.打包机, All.Class.Num.ToBool(dt.Rows[i]["Error"]) ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del);
                                 break;
                         }
@@ -193,6 +202,7 @@ namespace HeiFeiMidea
                     {
                         //添加平均值数据
                         tmpTickStatue.StationName.Add(frmMain.mMain.AllCars.AllInfoLineStation[index].StationName);
+                        tmpTickStatue.SetTime.Add(frmMain.mMain.AllCars.AllInfoLineStation[index].TimeOut);
                         tmpTickStatue.AverageTime.Add((int)statueTestTime.AverageTime);
                         tmpTickStatue.MinTime.Add(statueTestTime.MinTime);
                         tmpTickStatue.MaxTime.Add(statueTestTime.MaxTime);

@@ -51,7 +51,7 @@ namespace HeiFeiMidea
             All.Control.MoveControl.MoveShape pic = new All.Control.MoveControl.MoveShape();
             pic.Name = string.Format("Pic{0}", index);
             pic.Location = new Point(0, 0);
-            pic.Size = new Size(20, 20);
+            pic.Size = new Size(25, 25);
             pic.BackColor = Color.Blue;
             pic.Paint += pic_Paint;
             picBack.Controls.Add(pic);
@@ -59,8 +59,8 @@ namespace HeiFeiMidea
 
         private void pic_Paint(object sender, PaintEventArgs e)
         {
-            All.Control.MoveControl.MoveShape tmp=(All.Control.MoveControl.MoveShape) sender;
-            e.Graphics.DrawString(tmp.Name.Replace("Pic", ""), new Font("黑体", 12), new SolidBrush(Color.White), new RectangleF(0, 0, tmp.Width, tmp.Height), sf);
+            All.Control.MoveControl.MoveShape tmp = (All.Control.MoveControl.MoveShape)sender;
+            e.Graphics.DrawString(tmp.Name.Replace("Pic", ""), new Font("黑体", 8), new SolidBrush(Color.White), new RectangleF(0, 0, tmp.Width, tmp.Height), sf);
         }
 
         private void btnNiuJu1_Click(object sender, EventArgs e)

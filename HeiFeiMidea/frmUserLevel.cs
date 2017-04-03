@@ -127,7 +127,7 @@ namespace HeiFeiMidea
         {
             if (cbbName.SelectedIndex < 0 || cbbName.SelectedIndex > allUsers.Count)
             {
-                All.Window.MessageBox.Show(this, "当前选定的用户名称不对，不能保存权限数据！", "错误的用户", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                All.Window.MetroMessageBox.Show(this, "当前选定的用户名称不对，不能保存权限数据！", "错误的用户", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (cbbName.Text == "Administrator")

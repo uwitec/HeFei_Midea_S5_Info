@@ -31,6 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSetTime));
             this.panSize = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.colAdd = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colCheck = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colUseTime = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colHourStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMinStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colHourEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMinEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.txtPass = new System.Windows.Forms.TextBox();
@@ -40,13 +47,6 @@
             this.txtAllCount = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new All.Control.Metro.TitleButton();
-            this.colAdd = new System.Windows.Forms.DataGridViewImageColumn();
-            this.colCheck = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colUseTime = new System.Windows.Forms.DataGridViewImageColumn();
-            this.colHourStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMinStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colHourEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMinEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panSize.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -90,6 +90,48 @@
             this.dataGridView1.TabIndex = 65;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
+            // 
+            // colAdd
+            // 
+            this.colAdd.HeaderText = "添加/删除";
+            this.colAdd.Name = "colAdd";
+            this.colAdd.ReadOnly = true;
+            this.colAdd.Width = 85;
+            // 
+            // colCheck
+            // 
+            this.colCheck.HeaderText = "是否启用";
+            this.colCheck.Name = "colCheck";
+            this.colCheck.Visible = false;
+            // 
+            // colUseTime
+            // 
+            this.colUseTime.HeaderText = "启用时间段";
+            this.colUseTime.Name = "colUseTime";
+            // 
+            // colHourStart
+            // 
+            this.colHourStart.HeaderText = "开始时间【小时】";
+            this.colHourStart.Name = "colHourStart";
+            this.colHourStart.Width = 160;
+            // 
+            // colMinStart
+            // 
+            this.colMinStart.HeaderText = "开始时间【分钟】";
+            this.colMinStart.Name = "colMinStart";
+            this.colMinStart.Width = 160;
+            // 
+            // colHourEnd
+            // 
+            this.colHourEnd.HeaderText = "结束时间【小时】";
+            this.colHourEnd.Name = "colHourEnd";
+            this.colHourEnd.Width = 160;
+            // 
+            // colMinEnd
+            // 
+            this.colMinEnd.HeaderText = "结束时间【分钟】";
+            this.colMinEnd.Name = "colMinEnd";
+            this.colMinEnd.Width = 160;
             // 
             // panel1
             // 
@@ -151,7 +193,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(11, 9);
+            this.label7.Location = new System.Drawing.Point(9, 9);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(100, 21);
             this.label7.TabIndex = 102;
@@ -188,48 +230,6 @@
             this.btnClose.Size = new System.Drawing.Size(35, 35);
             this.btnClose.TabIndex = 65;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // colAdd
-            // 
-            this.colAdd.HeaderText = "添加/删除";
-            this.colAdd.Name = "colAdd";
-            this.colAdd.ReadOnly = true;
-            this.colAdd.Width = 85;
-            // 
-            // colCheck
-            // 
-            this.colCheck.HeaderText = "是否启用";
-            this.colCheck.Name = "colCheck";
-            this.colCheck.Visible = false;
-            // 
-            // colUseTime
-            // 
-            this.colUseTime.HeaderText = "启用时间段";
-            this.colUseTime.Name = "colUseTime";
-            // 
-            // colHourStart
-            // 
-            this.colHourStart.HeaderText = "开始时间【小时】";
-            this.colHourStart.Name = "colHourStart";
-            this.colHourStart.Width = 160;
-            // 
-            // colMinStart
-            // 
-            this.colMinStart.HeaderText = "开始时间【分钟】";
-            this.colMinStart.Name = "colMinStart";
-            this.colMinStart.Width = 160;
-            // 
-            // colHourEnd
-            // 
-            this.colHourEnd.HeaderText = "结束时间【小时】";
-            this.colHourEnd.Name = "colHourEnd";
-            this.colHourEnd.Width = 160;
-            // 
-            // colMinEnd
-            // 
-            this.colMinEnd.HeaderText = "结束时间【分钟】";
-            this.colMinEnd.Name = "colMinEnd";
-            this.colMinEnd.Width = 160;
             // 
             // frmSetTime
             // 

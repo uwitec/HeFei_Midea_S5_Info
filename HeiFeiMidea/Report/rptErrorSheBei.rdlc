@@ -85,6 +85,7 @@
                     <FontSize>8pt</FontSize>
                   </Style>
                 </ChartAxisTitle>
+                <Interval>1</Interval>
                 <VariableAutoInterval>true</VariableAutoInterval>
                 <ChartMajorGridLines>
                   <Enabled>False</Enabled>
@@ -265,7 +266,7 @@
           </Style>
         </ChartNoDataMessage>
         <DataSetName>dtAllError</DataSetName>
-        <Height>25cm</Height>
+        <Height>37.80583cm</Height>
         <Width>25cm</Width>
         <Style>
           <Border>
@@ -277,7 +278,7 @@
         </Style>
       </Chart>
     </ReportItems>
-    <Height>9.84252in</Height>
+    <Height>14.88419in</Height>
     <Style />
   </Body>
   <Width>9.84252in</Width>

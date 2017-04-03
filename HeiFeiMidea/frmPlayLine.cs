@@ -30,11 +30,13 @@ namespace HeiFeiMidea
         All.Control.Icon[] LengNinStation = new All.Control.Icon[HeiFeiMideaDll.cMain.AllLengNinQiCount];
         All.Control.Icon[] StationOther = new All.Control.Icon[HeiFeiMideaDll.cMain.AllOtherMachineCount];
 
+        static List<frmPlayLine> allPlays = new List<frmPlayLine>();
         public frmPlayLine()
         {
             InitializeComponent();
             SetStyle(ControlStyles.UserPaint | ControlStyles.DoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.ResizeRedraw, true);
             this.UpdateStyles();
+            allPlays.Add(this);
         }
 
         private void frmPlayLine_Load(object sender, EventArgs e)
@@ -511,8 +513,9 @@ namespace HeiFeiMidea
 
         private void frmPlayLine_FormClosing(object sender, FormClosingEventArgs e)
         {
-            frmMain.mMain.FlushInfo.AddInfo += FlushInfo_AddInfo;
-            frmMain.mMain.FlushInfo.DelInfo += FlushInfo_DelInfo;
+            allPlays.Remove(this);
+            frmMain.mMain.FlushInfo.AddInfo -= FlushInfo_AddInfo;
+            frmMain.mMain.FlushInfo.DelInfo -= FlushInfo_DelInfo;
             timFlush.Enabled = false;
             timFlush.Stop();
         }
@@ -535,6 +538,20 @@ namespace HeiFeiMidea
             frmMessageError fm = new frmMessageError(value);
             fm.ShowDialog();
             fm.Dispose();
+        }
+
+        private void frmPlayLine_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void frmPlayLine_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F10)
+            {
+                allPlays.ForEach(play =>
+                    play.listBox1.Items.Clear());
+            }
         }
         
     }

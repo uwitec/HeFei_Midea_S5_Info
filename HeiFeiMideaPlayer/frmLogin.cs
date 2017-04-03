@@ -124,7 +124,7 @@ namespace HeiFeiMideaPlayer
                         allTestItem[i].Icon = HeiFeiMideaPlayer.Properties.Resources.UserOk;
                         frmMain.mMain.AllDataBase.FlushData.Write(
                             string.Format("Update InfoLineStation Set UserName='{0}' where workStation={1}", UserName, allTestItem[i].Tag));
-                        using (DataTable dt = frmMain.mMain.AllDataBase.FlushData.Read(string.Format("select UserName from StatueUserLogin where UserName='{0}'", UserName)))
+                        using (DataTable dt = frmMain.mMain.AllDataBase.FlushData.Read(string.Format("select UserName from StatueUserLogin where UserName='{0}' and TestYear={1:yyyy} and TestMonth={1:MM}", UserName,DateTime.Now)))
                         {
                             if (dt == null || dt.Rows.Count <= 0)
                             {

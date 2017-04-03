@@ -27,14 +27,16 @@ namespace HeiFeiMidea
                     {
                         if ((DateTime.Now - cMain.StartTime).TotalSeconds > 8)
                         {
-                            frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("性能检测 {0}号工位 通讯出现故障", i + 1), (AllTest[i].Connect ? FlushAllError.ChangeList.Del : FlushAllError.ChangeList.Add)));
+                            if (frmMain.mMain.AllDataXml.ErrorShow.Show(FlushAllError.SpaceList.性能检))
+                            {
+                                frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("性能检测 {0}号工位 通讯出现故障", i + 1), (AllTest[i].Connect ? FlushAllError.ChangeList.Del : FlushAllError.ChangeList.Add)));
+                            }
                             frmMain.mMain.FlushAllError.Change(FlushAllError.SpaceList.性能检, i + 1, "通讯失败", (AllTest[i].Connect ? FlushAllError.ChangeList.Del : FlushAllError.ChangeList.Add), cSheBei.GetMachineIndexForAllError(FlushAllError.SpaceList.性能检, i + 1));
                             oldConnect[i] = AllTest[i].Connect;
                         }
                     }
                     if (AllTest[i].Connect && AllTest[i].Plc && AllTest[i].Ft2010 && AllTest[i].M7017_1 &&
-                        AllTest[i].M7017_2 && AllTest[i].M7017_3 && AllTest[i].M7017_4 &&
-                        AllTest[i].AnGui7440 && AllTest[i].AnGui7623 && AllTest[i].ChouKong)
+                        AllTest[i].M7017_2 && AllTest[i].M7017_3 && AllTest[i].M7017_4)
                     {
                         result[i] = true;
                     }
@@ -57,8 +59,7 @@ namespace HeiFeiMidea
                 for (int i = 0; i < result.Length && i < AllTest.Length; i++)
                 {
                     if (AllTest[i].Connect && AllTest[i].Plc && AllTest[i].Ft2010 && AllTest[i].M7017_1 &&
-                        AllTest[i].M7017_2 && AllTest[i].M7017_3 && AllTest[i].M7017_4 &&
-                        AllTest[i].AnGui7440 && AllTest[i].AnGui7623 && AllTest[i].ChouKong)
+                        AllTest[i].M7017_2 && AllTest[i].M7017_3 && AllTest[i].M7017_4)
                     {
                         switch (AllTest[i].NowStatue)
                         {
@@ -458,7 +459,7 @@ namespace HeiFeiMidea
                 {
                     if (value != anGui7623 && TestNo == 1)
                     {
-                        AddInfo("ESC125安检仪", value);
+                        //AddInfo("ESC125安检仪", value);
                     } anGui7623 = value;
                 }
             }
@@ -490,8 +491,11 @@ namespace HeiFeiMidea
             }
             public void AddInfo(string Space, bool connect)
             {
-                frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("性能检测 {0}号工位 {1}  出现故障", TestNo, Space), (connect ? FlushAllError.ChangeList.Del : FlushAllError.ChangeList.Add)));
-                frmMain.mMain.FlushAllError.Change(FlushAllError.SpaceList.性能检, this.TestNo, string.Format("{0}故障", Space), (connect ? FlushAllError.ChangeList.Del : FlushAllError.ChangeList.Add),TestNo);
+                if (frmMain.mMain.AllDataXml.ErrorShow.Show(FlushAllError.SpaceList.性能检))
+                {
+                    frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("性能检测 {0}号工位 {1}  出现故障", TestNo, Space), (connect ? FlushAllError.ChangeList.Del : FlushAllError.ChangeList.Add)));
+                }
+                frmMain.mMain.FlushAllError.Change(FlushAllError.SpaceList.性能检, this.TestNo, string.Format("{0}故障", Space), (connect ? FlushAllError.ChangeList.Del : FlushAllError.ChangeList.Add), TestNo);
             }
         }
         #endregion

@@ -71,7 +71,7 @@ namespace HeiFeiMidea
             #endregion
             #region//订单
             
-            title = new Title("今日订单目标产量", Docking.Top, new Font("宋体", 16, FontStyle.Bold), Color.White);
+            title = new Title("今日产量信息", Docking.Top, new Font("宋体", 16, FontStyle.Bold), Color.White);
             chartOrder.Titles.Add(title);
             //图示
             chartOrder.Legends[0].Enabled = false;
@@ -241,6 +241,7 @@ namespace HeiFeiMidea
             float tmpValue = 0;
             float tmpCount = 0;
             float tmpTime = 0;
+            DateTime now=DateTime.Now;
             switch (frmMain.mMain.FlushOEE.Smile)
             {
                 case FlushOEE.SmileList.优:
@@ -256,12 +257,12 @@ namespace HeiFeiMidea
             //订单产量
             List<string> x = new List<string>();
             List<int> y = new List<int>();
-            x.Add("订单产量");
-            x.Add("下线数量");
-            x.Add("欠产数量");
-            y.Add(frmMain.mMain.AllPCs.AllOrderCount.AllNeedCount);
-            y.Add(frmMain.mMain.AllPCs.AllOrderCount.CurOverCount);
-            y.Add(frmMain.mMain.AllPCs.AllOrderCount.AllNeedCount - frmMain.mMain.AllPCs.AllOrderCount.CurOverCount);
+            x.Add("目标产量");
+            x.Add("上线产量");
+            x.Add("下线产量");
+            y.Add(frmMain.mMain.AllDataXml.LocalSet.TodayCount);
+            y.Add(frmMain.mMain.AllPCs.AllCountPerHour.InLineCount);
+            y.Add(frmMain.mMain.AllPCs.AllCountPerHour.OutLineCount);
             chartOrder.Series[0].Points.DataBindXY(x, y);
 
             //小时产量
@@ -287,6 +288,13 @@ namespace HeiFeiMidea
                 {
                     tmpCount += frmMain.mMain.FlushOEE.OEECount[j];
                     tmpTime += frmMain.mMain.FlushOEE.OEETimes[j].TotalTime;
+                }
+                //减去当前小时段还没有过去的时间
+                if ((frmMain.mMain.FlushOEE.OEETimes[i].HourEnd * 60 + frmMain.mMain.FlushOEE.OEETimes[i].MinEnd) >
+                    (now.Hour * 60 + now.Minute))
+                {
+                    tmpTime -= (frmMain.mMain.FlushOEE.OEETimes[i].HourEnd * 60 + frmMain.mMain.FlushOEE.OEETimes[i].MinEnd -
+                        now.Hour * 60 - now.Minute) / 60.0f;
                 }
                 if (tmpTime > 0 && frmMain.mMain.AllDataXml.LocalSet.OEECount > 0)
                 {

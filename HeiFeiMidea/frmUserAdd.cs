@@ -31,14 +31,14 @@ namespace HeiFeiMidea
         {
             if (txtName.Text == "")
             {
-                All.Window.MessageBox.Show(this, "对不起，用户名称不能为空，请重新输入正确的用户名称！", "错误的用户名称", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                All.Window.MetroMessageBox.Show(this, "对不起，用户名称不能为空，请重新输入正确的用户名称！", "错误的用户名称", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtName.Focus();
                 txtName.SelectAll();
                 return;
             }
             if (txtPassword.Text != txtPasswordAgain.Text)
             {
-                All.Window.MessageBox.Show(this, "对不起，两次输入的密码不一致，请重新输入正确的用户密码！", "错误的用户密码", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                All.Window.MetroMessageBox.Show(this, "对不起，两次输入的密码不一致，请重新输入正确的用户密码！", "错误的用户密码", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPasswordAgain.Focus();
                 txtPasswordAgain.SelectAll();
                 return;
@@ -52,7 +52,7 @@ namespace HeiFeiMidea
                   });
             if (tmpIndex >= 0)
             {
-                All.Window.MessageBox.Show(this, "对不起，当前输入的用户名称已存在，请重新输入其他的用户名称！", "错误的用户名称", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                All.Window.MetroMessageBox.Show(this, "对不起，当前输入的用户名称已存在，请重新输入其他的用户名称！", "错误的用户名称", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtName.Focus();
                 txtName.SelectAll();
                 return;
@@ -60,12 +60,12 @@ namespace HeiFeiMidea
             if(HeiFeiMideaDll.UserSet.InsertUser(new HeiFeiMideaDll.UserSet(txtName.Text, txtPassword.Text),frmMain.mMain.AllDataBase.LocalData))
             {
                 HeiFeiMideaDll.LengNinUser.InsertUser(new HeiFeiMideaDll.LengNinUser(txtName.Text, txtPassword.Text), frmMain.mMain.AllDataBase.LocalData);
-                All.Window.MessageBox.Show(this, string.Format("当前用户【{0}】已成功添加到数据库", txtName.Text), "用户添加成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                All.Window.MetroMessageBox.Show(this, string.Format("当前用户【{0}】已成功添加到数据库", txtName.Text), "用户添加成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else
             {
-                All.Window.MessageBox.Show(this, string.Format("当前用户【{0}】添加数据库失败,失败原因请查看故障文件", txtName.Text), "用户添加失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                All.Window.MetroMessageBox.Show(this, string.Format("当前用户【{0}】添加数据库失败,失败原因请查看故障文件", txtName.Text), "用户添加失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }

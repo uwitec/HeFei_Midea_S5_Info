@@ -69,7 +69,11 @@ namespace HeiFeiMidea
             switch (space)
             {
                 case SpaceList.抽空充注:
+                    Change(space, 0, Error, change, cSheBei.GetMachineIndexForAllError(space, 0));
+                    break;
                 case SpaceList.氦检回收:
+                    Change(space, 0, Error, change, cSheBei.GetMachineIndexForAllError(space, 0));
+                    break;
                 case SpaceList.真空氦检:
                     Change(space, 0, Error, change, cSheBei.GetMachineIndexForAllError(space, 0));
                     break;

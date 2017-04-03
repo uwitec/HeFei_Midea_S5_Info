@@ -101,23 +101,31 @@ namespace HeiFeiMideaDll
                 allErrorEnum.ForEach(
                     errorEnum =>
                     {
-                        count+=conn.Write(string.Format("insert into SetErrorFather (Error) values ('{0}')", errorEnum.Value));
+                        if (conn.Write(string.Format("insert into SetErrorFather (Error) values ('{0}')", errorEnum.Value)) >= 1)
+                        {
+                            count++;
+                        }
                         if (errorEnum.Errors != null)
                         {
                             errorEnum.Errors.ForEach(//故障名称
                                 error =>
                                 {
-
-                                    count+=conn.Write(string.Format("insert into SetError (Error,FatherID) values ('{0}','{1}')",
-                                        error.Value,errorEnum.Value));
+                                    if (conn.Write(string.Format("insert into SetError (Error,FatherID) values ('{0}','{1}')",
+                                        error.Value, errorEnum.Value)) >= 1)
+                                    {
+                                        count++;
+                                    }
 
                                     if (error.ErrorFrom != null)
                                     {
                                         error.ErrorFrom.ForEach(//故障来源
                                             errorFrom =>
                                             {
-                                                count+=conn.Write(string.Format("insert into SetErrorSon (Error,FatherID) values ('{0}','{1}')",
-                                                     errorFrom.Value,error.Value));
+                                                if (conn.Write(string.Format("insert into SetErrorSon (Error,FatherID) values ('{0}','{1}')",
+                                                     errorFrom.Value, error.Value)) >= 1)
+                                                {
+                                                    count++;
+                                                }
                                             });
                                     }
                                 });
@@ -149,8 +157,11 @@ namespace HeiFeiMideaDll
                         {
                             errorStation.ErrorEnum.ForEach(//分类
                                 errorEnum => {
-                                    count+=conn.Write(string.Format("insert into SetErrorStation (Station,ErrorFather) values ({0},'{1}')",
-                                        errorStation.WorkStation, errorEnum.Value));
+                                    if (conn.Write(string.Format("insert into SetErrorStation (Station,ErrorFather) values ({0},'{1}')",
+                                        errorStation.WorkStation, errorEnum.Value)) >= 1)
+                                    {
+                                        count++;
+                                    }
                                 });
                         }
                     });

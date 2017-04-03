@@ -46,7 +46,7 @@ namespace HeiFeiMidea
         {
             if (txtPassword.Text != txtPasswordAgain.Text)
             {
-                All.Window.MessageBox.Show(this, "对不起，两次输入的密码不一致，请重新输入正确的用户密码！", "错误的用户密码", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                All.Window.MetroMessageBox.Show(this, "对不起，两次输入的密码不一致，请重新输入正确的用户密码！", "错误的用户密码", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPasswordAgain.Focus();
                 txtPasswordAgain.SelectAll();
                 return;

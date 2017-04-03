@@ -189,15 +189,19 @@ namespace HeiFeiMidea
             }
             if (statue[4] != Error)
             {
-                frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info("冷凝器线体出现故障", (statue[4] ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del)));
-
+                if (frmMain.mMain.AllDataXml.ErrorShow.Show(FlushAllError.SpaceList.冷凝器线体))
+                {
+                    frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info("冷凝器线体出现故障", (statue[4] ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del)));
+                }
                 frmMain.mMain.FlushAllError.Change(FlushAllError.SpaceList.冷凝器线体, statue[4] ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del);
                 Error = statue[4];
             }
             if (this.Connect != frmMain.mMain.AllMeterData.AllCommunite[26].Sons[0].Conn)
             {
-                frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info("冷凝器线体通讯失败", (this.Connect ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del)));
-
+                if (frmMain.mMain.AllDataXml.ErrorShow.Show(FlushAllError.SpaceList.冷凝器线体))
+                {
+                    frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info("冷凝器线体通讯失败", (this.Connect ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del)));
+                }
                 frmMain.mMain.FlushAllError.Change(FlushAllError.SpaceList.冷凝器线体, this.Connect ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del);
             }
             this.Connect = frmMain.mMain.AllMeterData.AllCommunite[26].Sons[0].Conn;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Data;
 namespace HeiFeiMidea
 {
     public class cData
@@ -68,12 +69,18 @@ namespace HeiFeiMidea
         /// </summary>
         public All.Class.DataReadAndWrite DataBarCode
         { get; set; }
+        /// <summary>
+        /// 计算员工作业时间
+        /// </summary>
+        public All.Class.DataReadAndWrite TestTimeData
+        { get; set; }
         public cData()
         {
             if (!System.IO.Directory.Exists(string.Format("{0}\\Data\\", All.Class.FileIO.GetNowPath())))
             {
                 System.IO.Directory.CreateDirectory(string.Format("{0}\\Data\\", All.Class.FileIO.GetNowPath()));
             }
+            TestTimeData = new All.Class.Access();
         }
         /// <summary>
         /// 加载数据库连接
@@ -92,6 +99,8 @@ namespace HeiFeiMidea
 
             DataBarCode = All.Class.DataReadAndWrite.GetData(dataFile, "BarCode");
 
+            TestTimeData.Login(".\\Data\\", "TodayTestTime.mdb", "", "");
+
             Local = new HeiFeiMideaDll.cDataLocal();
 
             Local.LocalData = LocalData;
@@ -103,6 +112,60 @@ namespace HeiFeiMidea
             Write = new cDataWrite(WriteData);
 
             All.Class.DataReadAndWrite tmp = All.Class.DataReadAndWrite.GetData(dataFile, "TmpData");
+
+            RemotUpdate();
+        }
+        /// <summary>
+        /// 远程升级时,数据库操作
+        /// </summary>
+        private void RemotUpdate()
+        {
+            if (WriteData == null)
+            {
+                return;
+            }
+            using (DataTable dt = WriteData.Read("select top 1 * from AllTestStationTime"))
+            {
+                if (dt == null || dt.Columns.Count <= 0)
+                {
+                    WriteData.Write("CREATE TABLE [dbo].[AllTestStationTime](" +
+                    "[ID] [bigint] IDENTITY(1,1) NOT NULL," +
+                "	[TestTime] [datetime] NOT NULL," +
+                "	[TestYear] [int] NULL," +
+                "	[TestMonth] [int] NULL," +
+                "	[TestDay] [int] NULL," +
+                "	[WorkStation] [int] NOT NULL," +
+                "	[StationName] [nvarchar](100) NULL," +
+                "	[TimeCount] [int] NULL," +
+                "	[OperaCount] [int] NULL," +
+                 "CONSTRAINT [PK_AllTestStationTime] PRIMARY KEY CLUSTERED " +
+                "(" +
+                "	[ID] ASC," +
+                "	[TestTime] ASC," +
+                "	[WorkStation] ASC" +
+                ")WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]" +
+                ") ON [PRIMARY]");
+                }
+            }
+            using (DataTable dt = WriteData.Read("select top 1 * from AllTestStationTimeEveryHour"))
+            {
+                if (dt == null || dt.Columns.Count <= 0)
+                {
+                    WriteData.Write("CREATE TABLE [dbo].[AllTestStationTimeEveryHour](" +
+                "	[ID] [bigint] IDENTITY(1,1) NOT NULL," +
+                "	[TestTime] [datetime] NOT NULL," +
+                "	[UseTime] [int] NULL," +
+                "	[WorkStation] [int] NULL," +
+                "	[StationName] [nvarchar](100) NOT NULL," +
+                " CONSTRAINT [PK_AllTestStationTimeEveryHour] PRIMARY KEY CLUSTERED" +
+                "(" +
+                "	[ID] ASC," +
+                "	[TestTime] ASC," +
+                "	[StationName] ASC" +
+                ")WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]" +
+                ") ON [PRIMARY]");
+                }
+            }
         }
     }
 }

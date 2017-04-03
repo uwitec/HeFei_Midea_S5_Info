@@ -213,7 +213,10 @@ namespace HeiFeiMidea
                         {
                             if (newBool[i])
                             {
-                                frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("1#机器人{0}", this.MachineOneError[i]), FlushAllError.ChangeList.Add));
+                                if (frmMain.mMain.AllDataXml.ErrorShow.Show(FlushAllError.SpaceList.机器人))
+                                {
+                                    frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("1#机器人{0}", this.MachineOneError[i]), FlushAllError.ChangeList.Add));
+                                }
                                 frmMain.mMain.FlushAllError.Change(FlushAllError.SpaceList.机器人, 1, this.MachineOneError[i], FlushAllError.ChangeList.Add, cSheBei.GetMachineIndexForAllError(FlushAllError.SpaceList.机器人, 1));
                             }
                             if (oldBool[i])
@@ -239,12 +242,19 @@ namespace HeiFeiMidea
                         {
                             if (newBool[i])
                             {
-                                frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("2#机器人{0}", this.MachineTwoError[i]), FlushAllError.ChangeList.Add));
+                                if (frmMain.mMain.AllDataXml.ErrorShow.Show(FlushAllError.SpaceList.机器人))
+                                {
+                                    frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("2#机器人{0}", this.MachineTwoError[i]), FlushAllError.ChangeList.Add));
+                                }
                                 frmMain.mMain.FlushAllError.Change(FlushAllError.SpaceList.机器人, 2, this.MachineTwoError[i], FlushAllError.ChangeList.Add, cSheBei.GetMachineIndexForAllError(FlushAllError.SpaceList.机器人, 2));
                             }
                             if (oldBool[i])
                             {
-                                frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("2#机器人{0}", this.MachineTwoError[i]), FlushAllError.ChangeList.Del));
+
+                                if (frmMain.mMain.AllDataXml.ErrorShow.Show(FlushAllError.SpaceList.机器人))
+                                {
+                                    frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("2#机器人{0}", this.MachineTwoError[i]), FlushAllError.ChangeList.Del));
+                                }
                                 frmMain.mMain.FlushAllError.Change(FlushAllError.SpaceList.机器人, 2, this.MachineTwoError[i], FlushAllError.ChangeList.Del, cSheBei.GetMachineIndexForAllError(FlushAllError.SpaceList.机器人, 2));
                             }
                         }

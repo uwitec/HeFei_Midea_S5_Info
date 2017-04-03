@@ -169,5 +169,11 @@ namespace HeiFeiMidea
                 All.Window.MetroMessageBox.Show(this, "所有设备数据已成功保存到数据库", "保存成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void btnError_Click(object sender, EventArgs e)
+        {
+            frmSetErrorShow fs = new frmSetErrorShow();
+            fs.ShowDialog();
+        }
     }
 }

@@ -22,25 +22,29 @@ namespace HeiFeiMidea
         /// <summary>
         /// 清除当天小时产量，打开软件时间与上一次打开时间超过24小时触发
         /// </summary>
-        public void ClearAllCountPerHour()
+        public bool ClearAllCountPerHour()
         {
-            WriteData.Write("update StatueCountPerHour Set OutLineCount=0 ,InLineCount=0 ,OutLineHourUp=0,UseNow='False' where Hour<9 or Hour>18");
-            WriteData.Write("update StatueCountPerHour Set OutLineCount=0 ,InLineCount=0 ,OutLineHourDown=0,UseNow='True' where Hour>=9 and Hour<=18");
+            bool result = true;
+            result = result && (WriteData.Write("update StatueCountPerHour Set OutLineCount=0 ,InLineCount=0 ,OutLineHourUp=0,UseNow='False' where Hour<9 or Hour>18") >= 0);
+            result = result && (WriteData.Write("update StatueCountPerHour Set OutLineCount=0 ,InLineCount=0 ,OutLineHourDown=0,UseNow='True' where Hour>=9 and Hour<=18") >= 0);
+            return result;
         }
         /// <summary>
         /// 清除所有登陆用户，打开软件时间与上一次打开时间超过24小时触发
         /// </summary>
-        public void ClearAllUser()
+        public bool ClearAllUser()
         {
-            WriteData.Write("update InfoLineStation Set UserName=''");
-            WriteData.Write("update InfoLengNinStation Set UserName=''");
+            bool result = true;
+            result = result && (WriteData.Write("update InfoLineStation Set UserName=''") >= 0);
+            result = result && (WriteData.Write("update InfoLengNinStation Set UserName=''") >= 0);
+            return result;
         }
         /// <summary>
         /// 清除当天OEE所有数据
         /// </summary>
-        public void ClearOEE()
+        public bool ClearOEE()
         {
-            WriteData.Write("delete from StatueOEE");
+            return WriteData.Write("delete from StatueOEE") >= 0;
         }
         /// <summary>
         /// 清除所临时故障，打开软件时间与上一次打开时间超过24小时触发

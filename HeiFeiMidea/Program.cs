@@ -14,6 +14,9 @@ namespace HeiFeiMidea
         [STAThread]
         static void Main()
         {
+            //All.Class.Sqlce sql = new All.Class.Sqlce();
+            //sql.Login("E:\\", "TmpSaveData.sdf", "", "");
+
             if (Environment.TickCount < 100000)
             {
                 System.Threading.Thread.Sleep(15000);//开机，数据库，网络连接等要准备，所以延时15秒给开机用

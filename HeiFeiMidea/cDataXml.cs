@@ -24,6 +24,11 @@ namespace HeiFeiMidea
         /// </summary>
         public LocalSingleFlushID LocalSingleFlush
         { get; set; }
+        /// <summary>
+        /// 故障是否显示
+        /// </summary>
+        public ErrorShowSet ErrorShow
+        { get; set; }
         public cDataXml()
         {
             if (!System.IO.Directory.Exists(XMLDirectory))
@@ -33,11 +38,13 @@ namespace HeiFeiMidea
             AllPlaySet = new PlaySets();
             LocalSet = new LocalSets();
             LocalSingleFlush = new LocalSingleFlushID();
+            ErrorShow = new ErrorShowSet();
         }
         public void Load()
         {
             All.Class.Error.DelMoreError(DateTime.Now.AddDays(-5));
             All.Class.Log.DelMoreLog(DateTime.Now.AddDays(-5));
+            ErrorShow.Load();
             AllPlaySet.Load();
             LocalSet.Load();
             LocalSingleFlush.Load();
@@ -191,6 +198,13 @@ namespace HeiFeiMidea
             /// </summary>
             public float OEEPass
             { get; set; }
+            /// <summary>
+            /// 今日目标产量
+            /// </summary>
+            public int TodayCount
+            { get; set; }
+
+            object lockObject = new object();
             public LocalSets()
             {
                 VideoDirectory = "E:\\FtpServer\\Video\\";
@@ -204,6 +218,7 @@ namespace HeiFeiMidea
                 OEECount = 5;
                 OEEGreet = 80;
                 OEEPass = 65;
+                TodayCount = 50;
             }
             public void Load()
             {
@@ -222,6 +237,8 @@ namespace HeiFeiMidea
                         OEEGreet = All.Class.Num.ToFloat(buff["OEEGreet"]);
                     if (buff.ContainsKey("OEEPass"))
                         OEEPass = All.Class.Num.ToFloat(buff["OEEPass"]);
+                    if (buff.ContainsKey("TodayCount"))
+                        TodayCount = All.Class.Num.ToInt(buff["TodayCount"]);
                     List<string> tmpFormatBarStr = new List<string>();
                     for (int i = 0; i < 20; i++)
                     {
@@ -260,21 +277,25 @@ namespace HeiFeiMidea
                 }
                 Save();
             }
-            public  void Save()
+            public void Save()
             {
-                Dictionary<string, string> buff = new Dictionary<string, string>();
-                buff.Add("VideoDirectory", this.VideoDirectory);
-                buff.Add("NiuJuDirectory", this.NiuJuDirectory);
-                buff.Add("AiDirectory", this.AiDirectory);
-                buff.Add("OEECount", this.OEECount.ToString("F3"));
-                buff.Add("OEEGreet", this.OEEGreet.ToString("F3"));
-                buff.Add("OEEPass", this.OEEPass.ToString("F3"));
-                for (int i = 0; i < FormatBarStr.Length; i++)
+                lock (lockObject)
                 {
-                    buff.Add(string.Format("FormatBarStr{0}", i), FormatBarStr[i]);
+                    Dictionary<string, string> buff = new Dictionary<string, string>();
+                    buff.Add("VideoDirectory", this.VideoDirectory);
+                    buff.Add("NiuJuDirectory", this.NiuJuDirectory);
+                    buff.Add("AiDirectory", this.AiDirectory);
+                    buff.Add("OEECount", this.OEECount.ToString("F3"));
+                    buff.Add("OEEGreet", this.OEEGreet.ToString("F3"));
+                    buff.Add("OEEPass", this.OEEPass.ToString("F3"));
+                    buff.Add("TodayCount", TodayCount.ToString());
+                    for (int i = 0; i < FormatBarStr.Length; i++)
+                    {
+                        buff.Add(string.Format("FormatBarStr{0}", i), FormatBarStr[i]);
+                    }
+                    buff.Add("TodayStart", string.Format("{0:yyyy-MM-dd HH:mm:ss}", TodayStart));
+                    All.Class.FileIO.Write(string.Format("{0}\\{1}", XMLDirectory, FileName), All.Class.SSFile.Dictionary2Text(buff), System.IO.FileMode.Create);
                 }
-                buff.Add("TodayStart", string.Format("{0:yyyy-MM-dd HH:mm:ss}", TodayStart));
-                All.Class.FileIO.Write(string.Format("{0}\\{1}", XMLDirectory, FileName), All.Class.SSFile.Dictionary2Text(buff), System.IO.FileMode.Create);
             }
         }
         public class PlaySets
@@ -400,6 +421,65 @@ namespace HeiFeiMidea
                     buff.Add(string.Format("Info{0}", i), Info[i]);
                 }
                 All.Class.FileIO.Write(string.Format("{0}{1}.txt", cDataXml.XMLDirectory, Player), All.Class.SSFile.Dictionary2Text(buff),System.IO.FileMode.Create);
+            }
+        }
+        /// <summary>
+        /// 故障显示设置
+        /// </summary>
+        public class ErrorShowSet
+        {
+            /// <summary>
+            /// 文件名称
+            /// </summary>
+            const string FileName = "故障显示.txt";
+            /// <summary>
+            /// 设置总数量
+            /// </summary>
+            const int SheBeiCount = 100;
+            /// <summary>
+            /// 设置故障是否显示
+            /// </summary>
+            public bool[] AllSheBeiShows
+            { get; set; }
+            object lockObject = new object();
+            public ErrorShowSet()
+            {
+                AllSheBeiShows = new bool[SheBeiCount];
+                for (int i = 0; i < AllSheBeiShows.Length; i++)
+                {
+                    AllSheBeiShows[i] = false;
+                }
+            }
+            public void Load()
+            {
+                if (System.IO.File.Exists(string.Format("{0}\\{1}", XMLDirectory, FileName)))
+                {
+                    Dictionary<string, string> buff = All.Class.SSFile.Text2Dictionary(All.Class.FileIO.ReadFile(string.Format("{0}\\{1}", XMLDirectory, FileName)));
+                    for (int i = 0; i < AllSheBeiShows.Length; i++)
+                    {
+                        if(buff.ContainsKey(string.Format("{0}",i)))
+                        {
+                            AllSheBeiShows[i] = All.Class.Num.ToBool(buff[string.Format("{0}", i)]);
+                        }
+                    }
+                }
+                Save();
+            }
+            public void Save()
+            {
+                lock (lockObject)
+                {
+                    Dictionary<string, string> buff = new Dictionary<string, string>();
+                    for (int i = 0; i < AllSheBeiShows.Length; i++)
+                    {
+                        buff.Add(i.ToString(), AllSheBeiShows[i].ToString());
+                    }
+                    All.Class.FileIO.Write(string.Format("{0}\\{1}", XMLDirectory, FileName), All.Class.SSFile.Dictionary2Text(buff), System.IO.FileMode.Create);
+                }
+            }
+            public bool Show(FlushAllError.SpaceList space)
+            {
+                return AllSheBeiShows[(int)space];
             }
         }
     }

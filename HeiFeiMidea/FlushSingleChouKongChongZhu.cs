@@ -18,7 +18,10 @@ namespace HeiFeiMidea
             {
                 if (oldConn != frmMain.mMain.AllMeterData.AllCommunite[32].Sons[0].Conn)
                 {
-                    frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("抽空工位 {0} 通讯失败", ""), (oldConn ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del)));
+                    if (frmMain.mMain.AllDataXml.ErrorShow.Show(FlushAllError.SpaceList.抽空充注))
+                    {
+                        frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("抽空工位 {0} 通讯失败", ""), (oldConn ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del)));
+                    }
                     frmMain.mMain.FlushAllError.Change(FlushAllError.SpaceList.抽空充注, "抽空工位 通讯失败", (oldConn ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del));
                     oldConn = frmMain.mMain.AllMeterData.AllCommunite[32].Sons[0].Conn;
                 }
@@ -206,9 +209,12 @@ namespace HeiFeiMidea
                 if (ErrorSingle[index] != error)
                 {
                     ErrorSingle[index] = error;
-                    frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("抽空工位 {0} 故障", info), (error ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del)));
+                    if (frmMain.mMain.AllDataXml.ErrorShow.Show(FlushAllError.SpaceList.抽空充注))
+                    {
+                        frmMain.mMain.FlushInfo.Change(new cFlushInfo.Info(string.Format("抽空工位 {0} 故障", info), (error ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del)));
+                    }
                     frmMain.mMain.FlushAllError.Change(FlushAllError.SpaceList.抽空充注, info, error ? FlushAllError.ChangeList.Add : FlushAllError.ChangeList.Del);
-                } 
+                }
             }
             /// <summary>
             /// 刷新物料呼叫

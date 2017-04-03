@@ -56,7 +56,7 @@ namespace HeiFeiMidea
             //写入停机操作时间
             for (int i = 0; i < HeiFeiMideaDll.cMain.AllStopStationCount; i++)
             {
-                frmMain.mMain.AllPCs.AllStatueTestTime.AllStatueTestTime[i].FlushLineStationToTestTime(StopAllStopTime);
+                frmMain.mMain.AllPCs.AllStatueTestTime.AllStatueTestTime[i].FlushLineStationToTestTime(StopAllStopTime, dtStatueTestTime.TableName);
                 dtStatueTestTime.Rows[i]["TestTime"] = frmMain.mMain.AllPCs.AllStatueTestTime.AllStatueTestTime[i].TestTime;
                 dtStatueTestTime.Rows[i]["TimeCount"] = frmMain.mMain.AllPCs.AllStatueTestTime.AllStatueTestTime[i].TimeCount;
                 dtStatueTestTime.Rows[i]["MinTime"] = frmMain.mMain.AllPCs.AllStatueTestTime.AllStatueTestTime[i].MinTime;

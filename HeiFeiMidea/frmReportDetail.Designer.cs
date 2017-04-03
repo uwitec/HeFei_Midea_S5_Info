@@ -32,6 +32,7 @@
             this.btnClose = new All.Control.Metro.TitleButton();
             this.panSize = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.rptChongZhu = new Microsoft.Reporting.WinForms.ReportViewer();
             this.rptChongHaiYaLiQuXian = new Microsoft.Reporting.WinForms.ReportViewer();
             this.rptChongHaiHuiShou = new Microsoft.Reporting.WinForms.ReportViewer();
             this.rptYinXiang = new System.Windows.Forms.Panel();
@@ -43,7 +44,8 @@
             this.rptPeiJian = new Microsoft.Reporting.WinForms.ReportViewer();
             this.rptAnZhuang = new Microsoft.Reporting.WinForms.ReportViewer();
             this.listBox1 = new All.Control.Metro.ListBox();
-            this.rptChongZhu = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.rptLouLv = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.rptTestJianLou = new Microsoft.Reporting.WinForms.ReportViewer();
             this.panSize.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -71,6 +73,8 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.rptLouLv);
+            this.panel1.Controls.Add(this.rptTestJianLou);
             this.panel1.Controls.Add(this.rptChongZhu);
             this.panel1.Controls.Add(this.rptChongHaiYaLiQuXian);
             this.panel1.Controls.Add(this.rptChongHaiHuiShou);
@@ -87,6 +91,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(474, 389);
             this.panel1.TabIndex = 56;
+            // 
+            // rptChongZhu
+            // 
+            this.rptChongZhu.DocumentMapWidth = 72;
+            this.rptChongZhu.LocalReport.ReportEmbeddedResource = "HeiFeiMidea.Report.rptChongZhu.rdlc";
+            this.rptChongZhu.Location = new System.Drawing.Point(246, 185);
+            this.rptChongZhu.Name = "rptChongZhu";
+            this.rptChongZhu.Size = new System.Drawing.Size(97, 76);
+            this.rptChongZhu.TabIndex = 10;
+            this.rptChongZhu.Visible = false;
             // 
             // rptChongHaiYaLiQuXian
             // 
@@ -212,15 +226,25 @@
             this.listBox1.TitleFont = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
-            // rptChongZhu
+            // rptLouLv
             // 
-            this.rptChongZhu.DocumentMapWidth = 72;
-            this.rptChongZhu.LocalReport.ReportEmbeddedResource = "HeiFeiMidea.Report.rptChongZhu.rdlc";
-            this.rptChongZhu.Location = new System.Drawing.Point(246, 185);
-            this.rptChongZhu.Name = "rptChongZhu";
-            this.rptChongZhu.Size = new System.Drawing.Size(97, 76);
-            this.rptChongZhu.TabIndex = 10;
-            this.rptChongZhu.Visible = false;
+            this.rptLouLv.DocumentMapWidth = 72;
+            this.rptLouLv.LocalReport.ReportEmbeddedResource = "HeiFeiMidea.Report.rptLouLv.rdlc";
+            this.rptLouLv.Location = new System.Drawing.Point(132, 267);
+            this.rptLouLv.Name = "rptLouLv";
+            this.rptLouLv.Size = new System.Drawing.Size(97, 76);
+            this.rptLouLv.TabIndex = 12;
+            this.rptLouLv.Visible = false;
+            // 
+            // rptTestJianLou
+            // 
+            this.rptTestJianLou.DocumentMapWidth = 72;
+            this.rptTestJianLou.LocalReport.ReportEmbeddedResource = "HeiFeiMidea.Report.rptJianLou.rdlc";
+            this.rptTestJianLou.Location = new System.Drawing.Point(20, 267);
+            this.rptTestJianLou.Name = "rptTestJianLou";
+            this.rptTestJianLou.Size = new System.Drawing.Size(97, 76);
+            this.rptTestJianLou.TabIndex = 11;
+            this.rptTestJianLou.Visible = false;
             // 
             // frmReportDetail
             // 
@@ -258,5 +282,7 @@
         private Microsoft.Reporting.WinForms.ReportViewer rptChongHaiHuiShou;
         private Microsoft.Reporting.WinForms.ReportViewer rptChongHaiYaLiQuXian;
         private Microsoft.Reporting.WinForms.ReportViewer rptChongZhu;
+        private Microsoft.Reporting.WinForms.ReportViewer rptLouLv;
+        private Microsoft.Reporting.WinForms.ReportViewer rptTestJianLou;
     }
 }

@@ -11,11 +11,6 @@
                   <GroupExpression>=Fields!TimeShow.Value</GroupExpression>
                 </GroupExpressions>
               </Group>
-              <SortExpressions>
-                <SortExpression>
-                  <Value>=Fields!TimeShow.Value</Value>
-                </SortExpression>
-              </SortExpressions>
               <Label>=Fields!TimeShow.Value</Label>
             </ChartMember>
           </ChartMembers>
@@ -80,7 +75,9 @@
             <ChartCategoryAxes>
               <ChartAxis Name="Primary">
                 <Style>
+                  <FontFamily>宋体</FontFamily>
                   <FontSize>8pt</FontSize>
+                  <Format>00号</Format>
                 </Style>
                 <ChartAxisTitle>
                   <Caption />
@@ -88,6 +85,7 @@
                     <FontSize>8pt</FontSize>
                   </Style>
                 </ChartAxisTitle>
+                <Interval>1</Interval>
                 <VariableAutoInterval>true</VariableAutoInterval>
                 <ChartMajorGridLines>
                   <Enabled>False</Enabled>
@@ -105,13 +103,19 @@
                     </Border>
                   </Style>
                 </ChartMinorGridLines>
+                <ChartMajorTickMarks>
+                  <IntervalType>Number</IntervalType>
+                </ChartMajorTickMarks>
                 <ChartMinorTickMarks>
                   <Length>0.5</Length>
                 </ChartMinorTickMarks>
                 <CrossAt>NaN</CrossAt>
+                <Scalar>true</Scalar>
                 <Minimum>NaN</Minimum>
                 <Maximum>NaN</Maximum>
                 <AllowLabelRotation>Rotate45</AllowLabelRotation>
+                <IncludeZero>false</IncludeZero>
+                <HideEndLabels>true</HideEndLabels>
                 <ChartAxisScaleBreak>
                   <Style />
                 </ChartAxisScaleBreak>
@@ -301,7 +305,7 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>80a57f9d-d7af-49f0-aab7-0278935c0369</rd:DataSourceID>
+      <rd:DataSourceID>c1cef212-81ba-43b7-818a-41eeaeeea5c1</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -325,12 +329,12 @@
         </Field>
         <Field Name="TimeShow">
           <DataField>TimeShow</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Int16</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>dsReport</rd:DataSetName>
-        <rd:SchemaPath>D:\编程\VS2013\合肥美的15HKB1120\HeiFeiMidea\HeiFeiMidea\Report\dsReport.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Users\帅\Documents\Code\合肥美联博信息化\HeiFeiMidea\HeiFeiMidea\Report\dsReport.xsd</rd:SchemaPath>
         <rd:TableName>dtOEE</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />

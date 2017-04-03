@@ -2,6 +2,10 @@
     
     
     public partial class dsReport {
+        partial class dtStationTimeDataTable
+        {
+        }
+    
         partial class dtCountDayDataTable
         {
      }

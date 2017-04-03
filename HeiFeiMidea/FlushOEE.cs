@@ -226,7 +226,7 @@ namespace HeiFeiMidea
                 get
                 {
                     float result = 1;
-                    float tmpMin = HourStart * 60 + MinStart - HourEnd * 60 - MinEnd;
+                    float tmpMin = HourEnd * 60 + MinEnd - HourStart * 60 - MinStart;
                     if (tmpMin > 0)
                     {
                         result = tmpMin / 60.0f;

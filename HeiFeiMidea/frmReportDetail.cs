@@ -65,6 +65,10 @@ namespace HeiFeiMidea
                 case "漏率曲线":
                     direcotry = HeiFeiMidea.CheckTestResultFile.CheckLenNingFile(lenNingCode);
                     fileName = "AllLenNingValue.sdf";
+                    //if (!System.IO.File.Exists(string.Format("{0}\\{1}",direcotry,fileName)))
+                    //{
+                    //    direcotry = string.Format("{0}\\Data\\TestData\\LenNingFile\\U880-22016102700{1:D2}\\", Application.StartupPath, (int)All.Class.Num.GetRandom(1, 40));
+                    //}
                     break;
                 default:
                     direcotry = HeiFeiMidea.CheckTestResultFile.CheckTestFile(barCode);
@@ -283,9 +287,33 @@ namespace HeiFeiMidea
                     InitImage();
                     break;
                 case "氦检记录":
+                    rptTestJianLou.Location = new Point(0, 0);
+                    rptTestJianLou.Size = panel1.Size;
+                    rptTestJianLou.BringToFront();
+                    rptTestJianLou.Visible = true;
 
+                    dt = sql.Read("select * from TestJianLou");
+                    dt.TableName = "dtTestJianLou";
+                    dsr = new Report.dsReport();
+                    dsr.Load(dt.CreateDataReader(), LoadOption.Upsert, dt.TableName);
+                    rd = new Microsoft.Reporting.WinForms.ReportDataSource("dtTestJianLou", dsr.Tables["dtTestJianLou"]);
+                    rptTestJianLou.LocalReport.DataSources.Clear();
+                    rptTestJianLou.LocalReport.DataSources.Add(rd);
+                    rptTestJianLou.RefreshReport();
                     break;
                 case "漏率曲线":
+                    rptLouLv.Location = new Point(0, 0);
+                    rptLouLv.Size = panel1.Size;
+                    rptLouLv.BringToFront();
+                    rptLouLv.Visible = true;
+                    dt = sql.Read("select * from TestLouLv");
+                    dt.TableName = "dtTestLouLv";
+                    dsr = new Report.dsReport();
+                    dsr.Load(dt.CreateDataReader(), LoadOption.Upsert, dt.TableName);
+                    rd = new Microsoft.Reporting.WinForms.ReportDataSource("dtTestLouLv", dsr.Tables["dtTestLouLv"]);
+                    rptLouLv.LocalReport.DataSources.Clear();
+                    rptLouLv.LocalReport.DataSources.Add(rd);
+                    rptLouLv.RefreshReport();
                     break;
             }
             sql.Close();
